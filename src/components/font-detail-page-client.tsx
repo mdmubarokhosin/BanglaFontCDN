@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -18,6 +19,27 @@ interface FontDetailPageClientProps {
 }
 
 const GLYPH_SET = "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ১২৩৪৫৬৭৮৯০";
+
+const styleNameToWeight: { [key: string]: number } = {
+  'পাতলা': 100,
+  'Thin': 100,
+  'এক্সট্রা লাইট': 200,
+  'Extra Light': 200,
+  'হালকা': 300,
+  'Light': 300,
+  'নিয়মিত': 400,
+  'Regular': 400,
+  'মিডিয়াম': 500,
+  'Medium': 500,
+  'সেমিবোল্ড': 600,
+  'Semi Bold': 600,
+  'বোল্ড': 700,
+  'Bold': 700,
+  'এক্সট্রাবোল্ড': 800,
+  'Extra Bold': 800,
+  'ব্ল্যাক': 900,
+  'Black': 900,
+};
 
 
 export default function FontDetailPageClient({ font }: FontDetailPageClientProps) {
@@ -109,15 +131,26 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
               {previewText || 'আমার সোনার বাংলা'}
             </div>
         </div>
-
+        
         <div className="border-b mb-8">
             <h2 className="text-2xl font-bold mb-4">স্টাইলসমূহ</h2>
-            <div className="space-y-6 pb-8" style={{ fontFamily: font.fontFamily }}>
-                <div><span className="text-sm text-muted-foreground">Light 300</span><p className="text-3xl" style={{ fontWeight: 300 }}>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p></div>
-                <div><span className="text-sm text-muted-foreground">Regular 400</span><p className="text-3xl" style={{ fontWeight: 400 }}>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p></div>
-                <div><span className="text-sm text-muted-foreground">Medium 500</span><p className="text-3xl" style={{ fontWeight: 500 }}>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p></div>
-                <div><span className="text-sm text-muted-foreground">Semi Bold 600</span><p className="text-3xl" style={{ fontWeight: 600 }}>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p></div>
-                <div><span className="text-sm text-muted-foreground">Bold 700</span><p className="text-3xl" style={{ fontWeight: 700 }}>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8" style={{ fontFamily: font.fontFamily }}>
+              {font.styles.map((style) => {
+                const weight = styleNameToWeight[style] || 400;
+                return (
+                  <div key={style} className="bg-card border rounded-lg p-4 flex flex-col justify-between">
+                    <div>
+                      <div className="flex justify-between items-baseline mb-3">
+                        <h4 className="font-semibold">{style}</h4>
+                        <span className="text-sm text-muted-foreground">{weight}</span>
+                      </div>
+                      <p className="text-2xl break-words" style={{ fontWeight: weight, fontSize: '24px' }}>
+                        আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
         </div>
         
@@ -213,3 +246,5 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
     </div>
   );
 }
+
+    

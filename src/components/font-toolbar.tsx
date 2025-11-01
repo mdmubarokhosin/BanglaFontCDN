@@ -1,9 +1,9 @@
 'use client';
 
-import { Search, Text, CaseSensitive, Type } from 'lucide-react';
+import { Search, CaseSensitive, Type, ListFilter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
-import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface FontToolbarProps {
   searchQuery: string;
@@ -12,6 +12,9 @@ interface FontToolbarProps {
   setFontSize: (size: number) => void;
   previewText: string;
   setPreviewText: (text: string) => void;
+  categories: string[];
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
 }
 
 export default function FontToolbar({
@@ -20,11 +23,14 @@ export default function FontToolbar({
   fontSize,
   setFontSize,
   previewText,
-  setPreviewText
+  setPreviewText,
+  categories,
+  selectedCategory,
+  setSelectedCategory
 }: FontToolbarProps) {
   return (
     <div className="mb-8 p-4 bg-card rounded-lg shadow-sm border border-border">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
@@ -47,7 +53,7 @@ export default function FontToolbar({
               aria-label="পূর্বরূপ পাঠ্য"
             />
         </div>
-        <div className="flex items-center gap-4">
+         <div className="flex items-center gap-4">
           <CaseSensitive className="h-6 w-6 text-muted-foreground" />
           <Slider
             value={[fontSize]}
@@ -58,6 +64,21 @@ export default function FontToolbar({
             aria-label="ফন্টের আকার"
           />
           <span className="text-lg font-semibold w-12 text-right">{fontSize}px</span>
+        </div>
+        <div className="relative">
+           <ListFilter className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <SelectTrigger className="pl-10" aria-label="ফন্টের বিভাগ">
+                <SelectValue placeholder="বিভাগ নির্বাচন করুন" />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((category) => (
+                  <SelectItem key={category} value={category}>
+                    {category === 'all' ? 'সব বিভাগ' : category}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 interface FontDetailPageClientProps {
     font: Font;
@@ -68,11 +69,11 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
           <Button variant="ghost" asChild>
             <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors">
               <ArrowLeft className="h-5 w-5" />
-              <span>সব ফন্ট</span>
+              <span className='hidden sm:inline'>সব ফন্ট</span>
             </Link>
           </Button>
-          <h1 className="text-2xl font-headline font-bold text-primary sm:text-3xl">{font.name}</h1>
-          <div className="w-24"></div>
+          <h1 className="text-xl sm:text-2xl font-headline font-bold text-primary">{font.name}</h1>
+          <ThemeToggle />
         </div>
       </header>
       

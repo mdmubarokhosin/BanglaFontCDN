@@ -1,3 +1,4 @@
+
 import type { Font } from '@/types/font';
 import FontCard from './font-card';
 
@@ -20,8 +21,10 @@ export default function FontGrid({ fonts, fontSize, previewText }: FontGridProps
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {fonts.map((font) => (
-        <FontCard key={font.id} font={font} />
+        <FontCard key={font.id} font={font} previewText={previewText} fontSize={fontSize} />
       ))}
     </div>
   );
 }
+
+    

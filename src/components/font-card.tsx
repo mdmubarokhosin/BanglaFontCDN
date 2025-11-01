@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -10,14 +11,15 @@ import Link from 'next/link';
 
 interface FontCardProps {
   font: Font;
+  previewText: string;
+  fontSize: number;
 }
 
-export default function FontCard({ font }: FontCardProps) {
+export default function FontCard({ font, previewText, fontSize }: FontCardProps) {
   const [likes, setLikes] = useState(font.likes);
   const [downloads, setDownloads] = useState(font.downloads);
   const [isLiked, setIsLiked] = useState(false);
   const { toast } = useToast();
-  const [previewText, setPreviewText] = useState('আমার সোনার বাংলা');
 
   useEffect(() => {
     if (!font.cssUrl) return;
@@ -37,6 +39,7 @@ export default function FontCard({ font }: FontCardProps) {
     e.preventDefault();
     setLikes(isLiked ? likes - 1 : likes + 1);
     setIsLiked(!isLiked);
+    // Here you would typically also make an API call to update the like count on your server
   };
 
   const handleDownload = (e: React.MouseEvent) => {
@@ -53,38 +56,39 @@ export default function FontCard({ font }: FontCardProps) {
       title: "ডাউনলোড শুরু হয়েছে!",
       description: `${font.name} ফন্টটি ডাউনলোড হচ্ছে।`,
     })
+    // Here you would typically also make an API call to update the download count on your server
   };
 
   return (
-    <Link href={`/font/${font.id}`} className="block h-full">
-      <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full p-6 bg-card rounded-lg border shadow-sm">
-        <CardHeader className="p-0">
-          <div className="flex justify-between items-start">
-            <div>
-              <CardTitle className="font-headline text-xl">{font.name}</CardTitle>
-              <CardDescription>ডিজাইনার: {font.designer}</CardDescription>
-            </div>
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Heart className={`h-4 w-4 ${isLiked ? 'text-red-500 fill-current' : ''}`} />
-              <span>{likes.toLocaleString('bn-BD')}</span>
+    <Link href={`/font/${font.id}`} className="block">
+      <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
+        <CardHeader className="flex-row justify-between items-center p-4 border-b">
+          <div>
+            <CardTitle className="font-headline text-lg">{font.name}</CardTitle>
+            <CardDescription className="text-xs">ডিজাইনার: {font.designer}</CardDescription>
+          </div>
+          <div className="flex items-center gap-3 text-sm">
+             <button onClick={handleLike} className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-colors p-1 -m-1">
+                <Heart className={`h-4 w-4 ${isLiked ? 'text-red-500 fill-current' : ''}`} />
+                <span className="text-xs font-mono">{likes.toLocaleString('bn-BD')}</span>
+            </button>
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <Download className="h-4 w-4" />
+              <span className="text-xs font-mono">{downloads.toLocaleString('bn-BD')}</span>
             </div>
           </div>
         </CardHeader>
-        <CardContent className="flex-grow min-h-[120px] flex items-center justify-center p-0 my-4">
+        <CardContent className="flex-grow flex items-center justify-center p-6 min-h-[150px]">
           <p
             className="text-center w-full break-words"
-            style={{ fontFamily: font.fontFamily, fontSize: `40px` }}
+            style={{ fontFamily: font.fontFamily, fontSize: `${fontSize}px` }}
           >
             {previewText}
           </p>
         </CardContent>
-        <CardFooter className="flex-col items-center gap-4 p-0 mt-auto">
-           <Button onClick={handleDownload} className="w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground">
-            <Download className="mr-2 h-4 w-4" />
-            ডাউনলোড ({downloads.toLocaleString('bn-BD')})
-          </Button>
-        </CardFooter>
       </Card>
     </Link>
   );
 }
+
+    

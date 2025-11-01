@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-card border-b border-border shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex flex-col items-center text-center">
+        <div className="container mx-auto px-4 py-2 flex flex-col items-center text-center">
           <h1 className="text-4xl font-headline font-bold text-primary">বাংলা ফন্ট সিডিএন</h1>
           <p className="text-muted-foreground mt-2">জনপ্রিয় বাংলা ফন্ট খুঁজে নিন এবং আপনার প্রকল্পে ব্যবহার করুন।</p>
         </div>

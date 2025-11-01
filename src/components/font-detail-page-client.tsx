@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -65,7 +64,7 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
   return (
     <div className="min-h-screen bg-background text-foreground">
        <header className="bg-card border-b border-border shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
           <Button variant="ghost" asChild>
             <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors">
               <ArrowLeft className="h-5 w-5" />
@@ -213,5 +212,3 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
     </div>
   );
 }
-
-    

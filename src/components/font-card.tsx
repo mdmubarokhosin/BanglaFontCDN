@@ -61,14 +61,14 @@ export default function FontCard({ font, previewText, fontSize }: FontCardProps)
 
   return (
     <Link href={`/font/${font.id}`} className="block">
-      <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
+      <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full active:scale-[0.98] active:shadow-md">
         <CardHeader className="flex-row justify-between items-center p-4 border-b">
           <div>
             <CardTitle className="font-headline text-lg">{font.name}</CardTitle>
             <CardDescription className="text-xs">ডিজাইনার: {font.designer}</CardDescription>
           </div>
           <div className="flex items-center gap-3 text-sm">
-             <button onClick={handleLike} className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-colors p-1 -m-1">
+             <button onClick={handleLike} className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-all p-1 -m-1 active:scale-90">
                 <Heart className={`h-4 w-4 ${isLiked ? 'text-red-500 fill-current' : ''}`} />
                 <span className="text-xs font-mono">{likes.toLocaleString('bn-BD')}</span>
             </button>
@@ -90,5 +90,3 @@ export default function FontCard({ font, previewText, fontSize }: FontCardProps)
     </Link>
   );
 }
-
-    

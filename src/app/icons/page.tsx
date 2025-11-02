@@ -6,6 +6,7 @@ import Logo from '@/components/icons/Logo';
 import LogoDecrease from '@/components/icons/LogoDecrease';
 import BanglaKeyboard from '@/components/icons/BanglaKeyboard';
 import BanglaFirstPlaceMedal from '@/components/icons/BanglaFirstPlaceMedal';
+import BanglaSecondPlaceMedal from '@/components/icons/BanglaSecondPlaceMedal';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -62,6 +63,14 @@ const icons = [
   <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='.9' d='M6.5 21.3 3.8 29l4.9-1.7 2.8 4.4 2.8-7.8-2.6-2.3zm18.7 0-5.1.3-2.7 2.3 2.8 7.8 2.8-4.4 4.9 1.7zM24 19.6l.3-4.6 3-3.5-3-3.5-.3-4.6-4.7-.4L16 0l-3.5 3-4.7.4L7.4 8l-3 3.5 3 3.5.3 4.6 4.7.3 3.5 3 3.4-3 4.7-.3zm-8.2-1.8a6.4 6.4 0 1 1 0-12.8 6.4 6.4 0 0 1 0 12.8z'></path>
   <text x='15.8' y='15' text-anchor='middle' font-size='12' font-weight='bold' font-family='serif' fill='currentColor'>১</text>
 </svg>`
+  },
+  {
+    name: "বাংলা দ্বিতীয় স্থান পদক আইকন",
+    component: BanglaSecondPlaceMedal,
+    svgString: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='3.33 -0.47 25.05 32.65' width='24' height='24'>
+  <path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='.9' d='M6.5 21.3 3.8 29l4.9-1.7 2.8 4.4 2.8-7.8-2.6-2.3zm18.7 0-5.1.3-2.7 2.3 2.8 7.8 2.8-4.4 4.9 1.7zM24 19.6l.3-4.6 3-3.5-3-3.5-.3-4.6-4.7-.4L16 0l-3.5 3-4.7.4L7.4 8l-3 3.5 3 3.5.3 4.6 4.7.3 3.5 3 3.4-3 4.7-.3zm-8.2-1.8a6.4 6.4 0 1 1 0-12.8 6.4 6.4 0 0 1 0 12.8z'></path>
+  <text x='15.8' y='15' text-anchor='middle' font-size='12' font-weight='bold' font-family='serif' fill='currentColor'>২</text>
+</svg>`
   }
 ];
 
@@ -112,8 +121,8 @@ export default function IconsPage() {
             
             {selectedIcon && (
               <DialogContent className="sm:max-w-2xl p-0">
-                  <DialogHeader className="p-6 pb-4 sr-only">
-                    <DialogTitle>{selectedIcon.name}</DialogTitle>
+                  <DialogHeader className="p-6 pb-4">
+                    <DialogTitle className="sr-only">{selectedIcon.name}</DialogTitle>
                   </DialogHeader>
                   <div className="flex flex-col items-center justify-center px-6 pb-6 space-y-4 text-center">
                       <div className="bg-muted rounded-lg p-8">

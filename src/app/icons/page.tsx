@@ -49,8 +49,8 @@ export default function IconsPage() {
           </div>
 
           <Dialog>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              <DialogTrigger asChild>
+            <DialogTrigger asChild>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <Card
                   className="group flex flex-col items-center justify-center p-4 aspect-square text-center cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:text-primary bg-card active:scale-95"
                 >
@@ -59,11 +59,14 @@ export default function IconsPage() {
                     <p className="text-sm text-muted-foreground group-hover:text-primary truncate">{iconName}</p>
                   </CardContent>
                 </Card>
-              </DialogTrigger>
-            </div>
-
-            <DialogContent className="sm:max-w-2xl">
-                <div className="flex flex-col items-center justify-center p-6 space-y-4">
+              </div>
+            </DialogTrigger>
+            
+            <DialogContent className="sm:max-w-2xl p-0">
+                <DialogHeader className="p-6 pb-0">
+                    <DialogTitle className="sr-only">{iconName}</DialogTitle>
+                </DialogHeader>
+                <div className="flex flex-col items-center justify-center px-6 pb-6 space-y-4">
                     <div className="bg-muted rounded-lg p-8">
                         <Logo className="h-24 w-24 text-primary" />
                     </div>

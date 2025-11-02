@@ -6,7 +6,8 @@ import Header from '@/components/header';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Search, Copy, icons } from 'lucide-react';
+import { Search, Copy } from 'lucide-react';
+import * as icons from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import iconData from '@/data/lucide-icons.json';
 
@@ -100,5 +101,3 @@ export default function IconsPage() {
     </div>
   );
 }
-
-    

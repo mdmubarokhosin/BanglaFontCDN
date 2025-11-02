@@ -20,6 +20,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import Logo from '@/components/icons/Logo';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -45,8 +46,9 @@ export default function Header() {
             <SheetContent side="left" className="w-[280px] p-0">
               <SheetHeader className="border-b p-4">
                 <SheetTitle>
-                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-2xl font-headline font-bold text-primary">
-                        বাংলা ফন্ট সিডিএন
+                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-2xl font-headline font-bold text-primary flex items-center gap-2">
+                        <Logo className="h-8 w-8" />
+                        <span>বাংলা ফন্ট সিডিএন</span>
                     </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -71,8 +73,9 @@ export default function Header() {
         </div>
 
         <div className="text-center flex-grow md:flex-grow-0">
-          <Link href="/" className="text-2xl md:text-3xl font-headline font-bold text-primary">
-            বাংলা ফন্ট সিডিএন
+          <Link href="/" className="text-2xl md:text-3xl font-headline font-bold text-primary flex items-center gap-2 justify-center">
+             <Logo className="h-8 w-8 hidden md:block" />
+            <span>বাংলা ফন্ট সিডিএন</span>
           </Link>
         </div>
 

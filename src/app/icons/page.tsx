@@ -1,43 +1,19 @@
 
-'use client';
-
-import { useState, useMemo } from 'react';
 import Header from '@/components/header';
-import { Input } from '@/components/ui/input';
+import Logo from '@/components/icons/Logo';
 import { Card, CardContent } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { Search, Copy } from 'lucide-react';
-import * as icons from 'lucide-react';
-import type { LucideProps } from 'lucide-react';
-import iconData from '@/data/lucide-icons.json';
-
-type IconName = keyof typeof icons;
-
-interface IconInfo {
-  name: string;
-  banglaName: string;
-}
-
-const iconComponentMap = icons as { [key: string]: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>> };
 
 export default function IconsPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const { toast } = useToast();
 
-  const allIcons: IconInfo[] = useMemo(() => iconData, []);
-
-  const filteredIcons = allIcons.filter(icon => 
-    icon.banglaName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    icon.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const copyToClipboard = (iconName: string) => {
-    navigator.clipboard.writeText(`<${iconName} />`);
-    toast({
-      title: 'কপি হয়েছে!',
-      description: `<${iconName} /> কোডটি আপনার ক্লিপবোর্ডে কপি করা হয়েছে।`,
-    });
+  const copyToClipboard = (svgCode: string) => {
+    navigator.clipboard.writeText(svgCode);
+    // You can add a toast notification here if you have one set up
+    alert('SVG কোড ক্লিপবোর্ডে কপি করা হয়েছে!');
   };
+
+  const logoSvgString = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='-0.17 -0.17 85.65 62.75' width='24' height='24'>
+  <path stroke='#000' stroke-width='.6' d='M8 34.5 6.7 12.9h1.7l1.3 21.6a28.3 28.3 0 0 0 .4 4q.4 2 1.2 3.7a11 11 0 0 0 2.2 3.3 11.3 11.3 0 0 0 8.2 3.5 13.7 13.7 0 0 0 .2 0q5.6 0 8.7-3.7a11.7 11.7 0 0 0 2-3.8q.6-1.7.9-3.8a28.3 28.3 0 0 0 .1-3.3V20.6a22.7 22.7 0 0 0 0-2.4q-.3-2.6-1.3-4.2a6.6 6.6 0 0 0 0-.1 4.5 4.5 0 0 0-3-2.1l-1.7-.3a9.9 9.9 0 0 0-.1 0 7.1 7.1 0 0 0-1.8.3 4.6 4.6 0 0 0-2.8 2q-1.4 2.2-1.4 6.4a25.2 25.2 0 0 0 0 .1v10.9h-1.8v-11a22 22 0 0 1 .2-2.8q.4-3.1 1.8-5a6.2 6.2 0 0 1 4.1-2.4 9.5 9.5 0 0 1 1.6-.2 9.5 9.5 0 0 1 2.4.3 6.2 6.2 0 0 1 3.6 2.5 9 9 0 0 1 1.2 2.5q.4 1.3.6 2.7a22.8 22.8 0 0 1 .1 2.7v14q0 7.8-3.4 12a11.4 11.4 0 0 1-6.9 3.9 17 17 0 0 1-3.1.3 14.2 14.2 0 0 1-4.6-.7 11.8 11.8 0 0 1-5.2-3.5q-3.7-4.2-4.1-12Zm42.4 27.9h-1.5L32.3 45l1.1-1.3L49 60.5h.8l-1 .6-.1-4.9V1h1.6v61.4Zm-.5-60.9H.2L0 0h49.9v1.5ZM74 14.7v31.8h-1.7V14.6h1.8Zm11.3 16.7H61v-1.6h24.3v1.6ZM61.2 1.5h-12V0H61l.1 1.5Zm-12 9.8V.3h1.1v11h-1.1Z'></path>
+</svg>`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -46,50 +22,24 @@ export default function IconsPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline tracking-tight">
-              আইকনসমূহ
+              লোগো ও আইকন
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              আপনার প্রকল্পের জন্য প্রয়োজনীয় আইকন খুঁজুন এবং ব্যবহার করুন।
+              আমাদের ওয়েবসাইটের কাস্টম SVG আইকন।
             </p>
           </div>
 
-          <div className="relative mb-12 max-w-lg mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder="আইকন অনুসন্ধান করুন (যেমন: user, home)"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 h-12 rounded-full bg-card border-2 focus:border-primary"
-              aria-label="আইকন অনুসন্ধান"
-            />
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <Card
+                onClick={() => copyToClipboard(logoSvgString)}
+                className="group flex flex-col items-center justify-center p-4 aspect-square text-center cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:text-primary bg-card active:scale-95"
+            >
+                <CardContent className="p-0 flex flex-col items-center justify-center gap-3">
+                    <Logo className="w-16 h-16 transition-transform duration-300 group-hover:scale-110" />
+                    <p className="text-sm text-muted-foreground group-hover:text-primary truncate">লোগো</p>
+                </CardContent>
+            </Card>
           </div>
-
-          {filteredIcons.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {filteredIcons.map((icon) => {
-                const IconComponent = iconComponentMap[icon.name as IconName];
-                if (!IconComponent) return null;
-                return (
-                  <Card
-                    key={icon.name}
-                    onClick={() => copyToClipboard(icon.name)}
-                    className="group flex flex-col items-center justify-center p-4 aspect-square text-center cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:text-primary bg-card active:scale-95"
-                  >
-                    <CardContent className="p-0 flex flex-col items-center justify-center gap-3">
-                      <IconComponent className="w-8 h-8 transition-transform duration-300 group-hover:scale-110" />
-                      <p className="text-xs text-muted-foreground group-hover:text-primary truncate">{icon.banglaName}</p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          ) : (
-             <div className="text-center py-16 text-muted-foreground">
-                <h2 className="text-2xl font-headline">কোনো আইকন পাওয়া যায়নি।</h2>
-                <p>অনুগ্রহ করে অন্য কিছু অনুসন্ধান করুন।</p>
-            </div>
-          )}
         </div>
       </main>
 

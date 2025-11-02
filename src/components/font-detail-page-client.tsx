@@ -12,7 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
-import { ThemeToggle } from '@/components/theme-toggle';
+import Header from '@/components/header';
 
 interface FontDetailPageClientProps {
     font: Font;
@@ -95,7 +95,7 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
             </Link>
           </Button>
           <h1 className="text-xl sm:text-2xl font-headline font-bold text-primary">{font.name}</h1>
-          <ThemeToggle />
+          <div/>
         </div>
       </header>
       
@@ -246,5 +246,3 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
     </div>
   );
 }
-
-    

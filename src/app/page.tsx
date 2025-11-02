@@ -5,7 +5,7 @@ import { default as fontData } from '@/data/fonts.json';
 import type { Font } from '@/types/font';
 import FontToolbar from '@/components/font-toolbar';
 import FontGrid from '@/components/font-grid';
-import { ThemeToggle } from '@/components/theme-toggle';
+import Header from '@/components/header';
 
 export default function Home() {
   const [fonts] = useState<Font[]>(fontData.fonts);
@@ -26,17 +26,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-card border-b border-border shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <div className='text-center flex-grow'>
-            <h1 className="text-2xl md:text-3xl font-headline font-bold text-primary">বাংলা ফন্ট সিডিএন</h1>
-            <p className="text-muted-foreground text-xs md:text-sm mt-1">জনপ্রিয় বাংলা ফন্ট খুঁজে নিন এবং আপনার প্রকল্পে ব্যবহার করুন।</p>
-          </div>
-          <ThemeToggle />
-        </div>
-      </header>
+      <Header />
       
       <main className="container mx-auto px-4 py-8">
+        <div className="text-center mb-8">
+            <h1 className="text-2xl md:text-3xl font-headline font-bold text-primary">বাংলা ফন্ট সিডিএন</h1>
+            <p className="text-muted-foreground text-xs md:text-sm mt-1">জনপ্রিয় বাংলা ফন্ট খুঁজে নিন এবং আপনার প্রকল্পে ব্যবহার করুন।</p>
+        </div>
+
         <FontToolbar
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}

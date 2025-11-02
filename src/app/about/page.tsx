@@ -18,34 +18,24 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-16">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-4">
-                <div className="inline-block p-3 bg-primary/10 rounded-lg">
-                    <Target className="h-8 w-8 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold font-headline">আমাদের লক্ষ্য</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  বাংলা ফন্ট সিডিএন-এর প্রধান লক্ষ্য হলো ডেভেলপার এবং ডিজাইনারদের জন্য বিনামূল্যে ও সহজে ব্যবহারযোগ্য বাংলা ফন্টের একটি নির্ভরযোগ্য উৎস তৈরি করা। আমরা বিশ্বাস করি, সুন্দর ফন্ট ব্যবহারের মাধ্যমে বাংলা ভাষার ডিজিটাল উপস্থাপনা আরও আকর্ষণীয় এবং সমৃদ্ধ হতে পারে।
-                </p>
+            <div className="text-center">
+              <div className="inline-block p-3 bg-primary/10 rounded-lg">
+                  <Target className="h-8 w-8 text-primary" />
               </div>
-              <div className="flex justify-center">
-                  <img src="https://picsum.photos/seed/mission/500/400" data-ai-hint="team collaboration" alt="Our Mission" className="rounded-lg shadow-lg object-cover" />
-              </div>
+              <h2 className="text-3xl font-bold font-headline mt-4">আমাদের লক্ষ্য</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mt-2">
+                বাংলা ফন্ট সিডিএন-এর প্রধান লক্ষ্য হলো ডেভেলপার এবং ডিজাইনারদের জন্য বিনামূল্যে ও সহজে ব্যবহারযোগ্য বাংলা ফন্টের একটি নির্ভরযোগ্য উৎস তৈরি করা। আমরা বিশ্বাস করি, সুন্দর ফন্ট ব্যবহারের মাধ্যমে বাংলা ভাষার ডিজিটাল উপস্থাপনা আরও আকর্ষণীয় এবং সমৃদ্ধ হতে পারে।
+              </p>
             </div>
 
-             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="flex justify-center md:order-2">
-                  <img src="https://picsum.photos/seed/vision/500/400" data-ai-hint="digital future" alt="Our Vision" className="rounded-lg shadow-lg object-cover" />
+            <div className="text-center">
+               <div className="inline-block p-3 bg-accent/10 rounded-lg">
+                  <Heart className="h-8 w-8 text-accent" />
               </div>
-              <div className="space-y-4 md:order-1">
-                 <div className="inline-block p-3 bg-accent/10 rounded-lg">
-                    <Heart className="h-8 w-8 text-accent" />
-                </div>
-                <h2 className="text-3xl font-bold font-headline">আমাদের অনুপ্রেরণা</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                 বাংলা ভাষায় সমৃদ্ধ একটি ডিজিটাল বিশ্ব গড়ার স্বপ্নই আমাদের অনুপ্রেরণা। আমরা চাই, যে কেউ যেন কোনো কারিগরি বাধা ছাড়াই তাদের প্রকল্পে সুন্দর বাংলা ফন্ট ব্যবহার করতে পারে। এই প্রকল্পটি কমিউনিটির জন্য এবং কমিউনিটির দ্বারাই পরিচালিত।
-                </p>
-              </div>
+              <h2 className="text-3xl font-bold font-headline mt-4">আমাদের অনুপ্রেরণা</h2>
+              <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mt-2">
+               বাংলা ভাষায় সমৃদ্ধ একটি ডিজিটাল বিশ্ব গড়ার স্বপ্নই আমাদের অনুপ্রেরণা। আমরা চাই, যে কেউ যেন কোনো কারিগরি বাধা ছাড়াই তাদের প্রকল্পে সুন্দর বাংলা ফন্ট ব্যবহার করতে পারে। এই প্রকল্পটি কমিউনিটির জন্য এবং কমিউনিটির দ্বারাই পরিচালিত।
+              </p>
             </div>
 
             <div className="text-center pt-8">

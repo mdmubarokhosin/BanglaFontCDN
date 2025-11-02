@@ -66,14 +66,14 @@ export default function IconsPage() {
                 <DialogHeader className="p-6 pb-0">
                     <DialogTitle className="sr-only">{iconName}</DialogTitle>
                 </DialogHeader>
-                <div className="flex flex-col items-center justify-center px-6 pb-6 space-y-4">
+                <div className="flex flex-col items-center justify-center px-6 pb-6 space-y-4 text-center">
                     <div className="bg-muted rounded-lg p-8">
                         <Logo className="h-24 w-24 text-primary" />
                     </div>
                     <h2 className="text-2xl font-bold font-headline">{iconName}</h2>
                     
-                    <div className="w-full space-y-2">
-                        <h3 className="text-sm font-medium text-muted-foreground">SVG Code</h3>
+                    <div className="w-full space-y-2 text-left">
+                        <h3 className="text-sm font-medium text-muted-foreground text-center">SVG Code</h3>
                         <div className="relative">
                             <Textarea
                                 className="min-h-[150px] bg-gray-900 text-white font-mono text-xs pr-12"

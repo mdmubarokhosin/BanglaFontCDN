@@ -70,13 +70,10 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
 
   const getEmbedCode = () => {
     const preloadTag = includePreload ? `<link rel="preload" href="${font.cssUrl}" as="style" />\n` : '';
-    if (embedType === 'link' && font.linkUrl) {
-        return `${preloadTag}${font.linkUrl}`;
+    if (embedType === 'link') {
+        return font.linkUrl ? `${preloadTag}${font.linkUrl}` : 'ব্যবহারের কোড উপলব্ধ নয়।';
     }
-    if (embedType === 'import' && font.importUrl) {
-      return font.importUrl;
-    }
-    return 'ব্যবহারের কোড উপলব্ধ নয়।';
+    return font.importUrl || 'ব্যবহারের কোড উপলব্ধ নয়।';
   }
   
   const getCssCode = () => {

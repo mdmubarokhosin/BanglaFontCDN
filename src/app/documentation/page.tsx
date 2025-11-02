@@ -77,9 +77,9 @@ export default function DocumentationPage() {
               </section>
               
               <section id="english-font">
-                <h2 className="text-3xl font-bold font-headline mb-4 border-b pb/docs/backend-2">৩. বাংলা ফন্টের সাথে ইংরেজি ফন্ট ব্যবহার</h2>
+                <h2 className="text-3xl font-bold font-headline mb-4 border-b pb-2">৩. বাংলা ফন্টের সাথে ইংরেজি ফন্ট ব্যবহার</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  অনেক সময় বাংলা ফন্টের সাথে একটি মানানসই ইংরেজি ফন্ট ব্যবহারের প্রয়োজন হয়। যেমন, Hind Siliguri ফন্টের সাথে PT Sans একটি দারুণ 조합।
+                  অনেক সময় বাংলা ফন্টের সাথে একটি মানানসই ইংরেজি ফন্ট ব্যবহারের প্রয়োজন হয়। যেমন, Hind Siliguri ফন্টের সাথে PT Sans একটি দারুণ সমন্বয়।
                 </p>
                 <CodeBlock>
 {`<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">`}

@@ -49,8 +49,7 @@ export default function Header() {
             <SheetContent side="left" className="w-[280px] bg-card p-4">
               <SheetHeader className="mb-4">
                 <SheetTitle>
-                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-xl font-headline font-bold text-primary flex items-center gap-2">
-                        <Logo className="h-8 w-8" />
+                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-xl font-headline font-bold text-primary flex items-center justify-center gap-2">
                         <span>বাংলা ফন্ট সিডিএন</span>
                     </Link>
                 </SheetTitle>

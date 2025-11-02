@@ -20,6 +20,12 @@ export function useCollection<T extends DocumentData>(
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
+  const queryPath = q?.path;
+  // A simple way to represent the query constraints for dependency array.
+  // This is not perfect but works for simple queries.
+  const queryConstraints = q ? JSON.stringify((q as any)._query.constraints.map((c: any) => c.type)) : '';
+
+
   useEffect(() => {
     if (!q) {
       setData([]);
@@ -46,7 +52,7 @@ export function useCollection<T extends DocumentData>(
     );
 
     return () => unsubscribe();
-  }, [q ? q.path : '', q ? JSON.stringify(q.toJSON()) : '']);
+  }, [queryPath, queryConstraints, q]);
 
   return { data, loading, error };
 }

@@ -178,10 +178,10 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
                   <div key={style} className="bg-card border rounded-lg p-4 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-baseline mb-3">
-                        <h4 className="font-semibold">{style}</h4>
+                        <h4 className="font-semibold" style={{ fontFamily: font.fontFamily }}>{style}</h4>
                         <span className="text-sm text-muted-foreground">{weight}</span>
                       </div>
-                      <p className="text-2xl break-words" style={{ fontWeight: weight, fontSize: '24px' }}>
+                      <p className="text-2xl break-words" style={{ fontFamily: font.fontFamily, fontWeight: weight, fontSize: '24px' }}>
                         আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।
                       </p>
                     </div>

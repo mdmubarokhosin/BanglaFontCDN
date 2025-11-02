@@ -1,7 +1,10 @@
 
-import { Users, Target, Heart, Zap, Feather, Package, Wind, Download, Code, BookText } from 'lucide-react';
+import { Users, Target, Heart, Zap, Feather, Package, Wind, Download, Code, BookText, Wrench, Shield, Copyright } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from '@/components/header';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const features = [
   {
@@ -36,6 +39,16 @@ const features = [
   },
 ];
 
+const techStack = [
+    { name: "Next.js", description: "React Framework" },
+    { name: "React", description: "UI Library" },
+    { name: "Tailwind CSS", description: "CSS Framework" },
+    { name: "Shadcn/ui", description: "Component Library" },
+    { name: "Lucide React", description: "Icon Library" },
+    { name: "Vercel", description: "Hosting" },
+    { name: "Cloudflare Pages", description: "CDN Hosting" },
+];
+
 const CodeBlock = ({ children }: { children: React.ReactNode }) => (
   <pre className="text-sm bg-gray-900 text-white p-4 rounded-md overflow-x-auto mt-2">
     <code>{children}</code>
@@ -47,21 +60,24 @@ export default function AboutPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline tracking-tight">
-              আমাদের সম্পর্কে
+              বাংলা ফন্ট সিডিএন
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              বাংলা ফন্ট সিডিএন-এর পেছনের গল্প, আমাদের লক্ষ্য এবং ব্যবহারবিধি।
+              প্রকল্পের পেছনের গল্প, আমাদের লক্ষ্য এবং বিস্তারিত তথ্যাবলী।
             </p>
           </div>
 
           <Tabs defaultValue="about" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 mb-8 h-auto">
               <TabsTrigger value="about">আমাদের সম্পর্কে</TabsTrigger>
               <TabsTrigger value="features">ফিচারসমূহ</TabsTrigger>
               <TabsTrigger value="usage">ব্যবহারবিধি</TabsTrigger>
+              <TabsTrigger value="tech">কি দিয়ে তৈরি</TabsTrigger>
+              <TabsTrigger value="license">লাইসেন্স</TabsTrigger>
+              <TabsTrigger value="contributors">অবদানকারী</TabsTrigger>
             </TabsList>
 
             <TabsContent value="about">
@@ -83,16 +99,6 @@ export default function AboutPage() {
                         <h2 className="text-3xl font-bold font-headline mt-4">আমাদের অনুপ্রেরণা</h2>
                         <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mt-2">
                         বাংলা ভাষায় সমৃদ্ধ একটি ডিজিটাল বিশ্ব গড়ার স্বপ্নই আমাদের অনুপ্রেরণা। আমরা চাই, যে কেউ যেন কোনো কারিগরি বাধা ছাড়াই তাদের প্রকল্পে সুন্দর বাংলা ফন্ট ব্যবহার করতে পারে। এই প্রকল্পটি কমিউনিটির জন্য এবং কমিউনিটির দ্বারাই পরিচালিত।
-                        </p>
-                    </div>
-
-                    <div className="text-center pt-8">
-                        <div className="inline-block p-3 bg-primary/10 rounded-lg">
-                        <Users className="h-10 w-10 text-primary" />
-                        </div>
-                        <h2 className="text-3xl font-bold mt-4 font-headline">নেপথ্যের কারিগর</h2>
-                        <p className="mt-2 max-w-2xl mx-auto text-muted-foreground">
-                        আমরা একদল উৎসাহী ডেভেলপার এবং ডিজাইনার, যারা বাংলা ভাষার প্রতি ভালোবাসা থেকে এই প্রকল্পটি শুরু করেছি। আমাদের এই যাত্রায় আপনার অংশগ্রহণকেও আমরা স্বাগত জানাই।
                         </p>
                     </div>
                 </div>
@@ -205,6 +211,90 @@ export default function AboutPage() {
                   </section>
                 </div>
             </TabsContent>
+
+             <TabsContent value="tech">
+                <div className="space-y-8 mt-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 font-headline">
+                                <Wrench className="w-6 h-6 text-primary"/>
+                                কি দিয়ে তৈরি
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground mb-6">
+                                এই প্রকল্পটি বিভিন্ন আধুনিক ওপেন-সোর্স প্রযুক্তি ব্যবহার করে তৈরি করা হয়েছে।
+                            </p>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                                {techStack.map((tech) => (
+                                    <div key={tech.name} className="bg-muted/50 p-3 rounded-lg text-center">
+                                        <p className="font-bold">{tech.name}</p>
+                                        <p className="text-xs text-muted-foreground">{tech.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </TabsContent>
+
+             <TabsContent value="license">
+                <div className="space-y-8 mt-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 font-headline">
+                                <Shield className="w-6 h-6 text-primary"/>
+                                ফন্ট কপিরাইট এবং লাইসেন্স
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground leading-relaxed">
+                                এই ওয়েবসাইটে প্রদর্শিত সমস্ত বাংলা ফন্ট <Link href="https://openfontlicense.org/" target="_blank" className="text-primary underline">SIL Open Font License (OFL)</Link>-এর অধীনে লাইসেন্সপ্রাপ্ত। এর মানে হলো, আপনি এই ফন্টগুলো আপনার ব্যক্তিগত বা বাণিজ্যিক যেকোনো প্রকল্পে বিনামূল্যে ব্যবহার, পরিবর্তন এবং বিতরণ করতে পারবেন। তবে, লাইসেন্সের শর্তাবলী অনুযায়ী, ফন্ট বিক্রি করা বা লাইসেন্স পরিবর্তন করা যাবে না।
+                            </p>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 font-headline">
+                                <Copyright className="w-6 h-6 text-primary"/>
+                                ওয়েবসাইট কন্টেন্ট লাইসেন্স
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground leading-relaxed">
+                                এই ওয়েবসাইটের সোর্স কোড <Link href="https://opensource.org/licenses/MIT" target="_blank" className="text-primary underline">MIT License</Link>-এর অধীনে উপলব্ধ। আপনি কোডটি দেখতে, পরিবর্তন করতে এবং আপনার নিজের প্রকল্পে ব্যবহার করতে পারেন। আমাদের লক্ষ্য জ্ঞান এবং রিসোর্স ভাগাভাগি করা।
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </TabsContent>
+
+            <TabsContent value="contributors">
+                 <div className="space-y-8 mt-8">
+                     <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 font-headline">
+                                <Users className="w-6 h-6 text-primary"/>
+                                রক্ষণাবেক্ষণকারী এবং অবদানকারী
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                           <p className="text-muted-foreground mb-4">
+                               এই প্রকল্পটি কমিউনিটির সাহায্যে পরিচালিত। আমরা সকল অবদানকারীকে স্বাগত জানাই।
+                            </p>
+                           <div className="flex items-center gap-4 bg-muted/50 p-4 rounded-lg">
+                                <div>
+                                    <h3 className="font-bold">মোঃ মোবারক ভূঁইয়া</h3>
+                                    <p className="text-sm text-muted-foreground">প্রধান রক্ষণাবেক্ষণকারী</p>
+                                </div>
+                            </div>
+                            <p className="text-muted-foreground mt-4 text-sm">
+                                আপনিও এই প্রকল্পে অবদান রাখতে পারেন। আমাদের <Link href="#" className="text-primary underline">GitHub রিপোজিটরিটি</Link> দেখুন।
+                            </p>
+                        </CardContent>
+                    </Card>
+                 </div>
+            </TabsContent>
           </Tabs>
 
         </div>
@@ -218,3 +308,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+  

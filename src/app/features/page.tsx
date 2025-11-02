@@ -1,79 +1,91 @@
+'use client';
 
-import Header from '@/components/header';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Zap, Feather, Package, Wind, Heart, Download } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
+import {
+  Menu,
+  Home,
+  Info,
+  Star,
+  Package,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import Logo from '@/components/icons/Logo';
 
-const features = [
-  {
-    icon: Wind,
-    title: 'দ্রুতগতির সিডিএন',
-    description: 'আমাদের অপটিমাইজ করা সিডিএন আপনার ওয়েবসাইটে দ্রুত ফন্ট লোড নিশ্চিত করে।',
-  },
-  {
-    icon: Package,
-    title: 'বিশাল ফন্ট সংগ্রহ',
-    description: 'জনপ্রিয় এবং ক্লাসিক বাংলা ফন্টের একটি বিশাল সংগ্রহ থেকে বেছে নিন।',
-  },
-  {
-    icon: Feather,
-    title: 'সহজ ব্যবহার',
-    description: 'মাত্র এক লাইন কোড ব্যবহার করে আপনার প্রকল্পে বাংলা ফন্ট যোগ করুন।',
-  },
-  {
-    icon: Download,
-    title: 'ফন্ট ডাউনলোড',
-    description: 'আপনার প্রিয় ফন্টগুলো অফলাইনে ব্যবহারের জন্য সহজেই ডাউনলোড করুন।',
-  },
-  {
-    icon: Heart,
-    title: 'পছন্দের তালিকা',
-    description: 'আপনার পছন্দের ফন্টগুলো একটি তালিকায় সংরক্ষণ করুন এবং পরে ব্যবহার করুন।',
-  },
-  {
-    icon: Zap,
-    title: 'পারফরম্যান্স অপটিমাইজেশন',
-    description: 'মিনিফায়েড CSS এবং Preload অপশন ব্যবহার করে আপনার সাইটের পারফরম্যান্স বাড়ান।',
-  },
-];
+export default function Header() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-export default function FeaturesPage() {
+  const navLinks = [
+    { href: '/', icon: Home, label: 'হোম' },
+    { href: '/about', icon: Info, label: 'আমাদের সম্পর্কে' },
+    { href: '/icons', icon: Package, label: 'আইকন' },
+    { href: '/favorites', icon: Star, label: 'পছন্দের ফন্ট' },
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline tracking-tight">
-              আমাদের ফিচারসমূহ
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              বাংলা ফন্ট সিডিএন-এর প্রধান বৈশিষ্ট্য এবং সুবিধাগুলো দেখুন।
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-card border hover:shadow-lg transition-shadow duration-300">
-                <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+    <header className="bg-card border-b border-border shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+        <div className="md:hidden">
+          <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[280px] p-0">
+              <SheetHeader className="border-b p-4">
+                <SheetTitle>
+                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-2xl font-headline font-bold text-primary flex items-center gap-2">
+                        <Logo className="h-8 w-8" />
+                        <span>বাংলা ফন্ট সিডিএন</span>
+                    </Link>
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="mt-4 p-2">
+                <div className="flex flex-col gap-1">
+                  {navLinks.map(link => (
+                     <Button variant="ghost" asChild key={link.href} className="justify-start">
+                        <Link
+                            href={link.href}
+                            onClick={() => setIsDrawerOpen(false)}
+                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:text-foreground"
+                        >
+                            <link.icon className="h-5 w-5" />
+                            <span>{link.label}</span>
+                        </Link>
+                    </Button>
+                  ))}
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
-      </main>
 
-      <footer className="bg-card border-t mt-16 py-6">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} বাংলা ফন্ট সিডিএন। সর্বস্বত্ব সংরক্ষিত।</p>
+        <div className="text-center flex-grow md:flex-grow-0">
+          <Link href="/" className="text-2xl md:text-3xl font-headline font-bold text-primary flex items-center gap-2 justify-center">
+             <Logo className="h-8 w-8 hidden md:block" />
+            <span>বাংলা ফন্ট সিডিএন</span>
+          </Link>
         </div>
-      </footer>
-    </div>
+
+        <div className="hidden md:flex items-center gap-1">
+           {navLinks.map(link => (
+              <Button variant="ghost" asChild key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </Button>
+           ))}
+        </div>
+
+        <ThemeToggle />
+      </div>
+    </header>
   );
 }

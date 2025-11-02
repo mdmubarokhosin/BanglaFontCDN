@@ -8,9 +8,7 @@ import {
   Home,
   Info,
   Star,
-  BookText,
   Package,
-  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -28,9 +26,7 @@ export default function Header() {
 
   const navLinks = [
     { href: '/', icon: Home, label: 'হোম' },
-    { href: '/features', icon: Sparkles, label: 'ফিচার' },
     { href: '/about', icon: Info, label: 'আমাদের সম্পর্কে' },
-    { href: '/documentation', icon: BookText, label: 'ব্যবহারবিধি' },
     { href: '/icons', icon: Package, label: 'আইকন' },
     { href: '/favorites', icon: Star, label: 'পছন্দের ফন্ট' },
   ];

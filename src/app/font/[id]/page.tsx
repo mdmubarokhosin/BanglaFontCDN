@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: FontDetailPageProps): Promise
 }
 
 export default async function FontDetailPage({ params }: FontDetailPageProps) {
-  const font = await getFont(params.id);
+  const { id } = params;
+  const font = await getFont(id);
 
   if (!font) {
     notFound();

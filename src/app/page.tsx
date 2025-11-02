@@ -1,23 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Font } from '@/types/font';
 import FontToolbar from '@/components/font-toolbar';
 import FontGrid from '@/components/font-grid';
 import Header from '@/components/header';
-import { useCollection } from '@/firebase';
-import { collection, query } from 'firebase/firestore';
-import { useFirestore } from '@/firebase';
+import fontData from '@/data/fonts.json';
 
 export default function Home() {
-  const firestore = useFirestore();
-  const fontsCollection = collection(firestore, 'fonts');
-  const { data: fonts, loading } = useCollection<Font>(query(fontsCollection));
+  const [fonts, setFonts] = useState<Font[]>([]);
+  const [loading, setLoading] = useState(true);
   
   const [searchQuery, setSearchQuery] = useState('');
   const [fontSize, setFontSize] = useState(24);
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।');
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  useEffect(() => {
+    // Simulate loading fonts from a local source
+    setFonts(fontData.fonts);
+    setLoading(false);
+  }, []);
   
   const allCategories = fonts ? ['all', ...Array.from(new Set(fonts.map(f => f.category)))] : ['all'];
 

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -7,18 +6,22 @@ import FontGrid from '@/components/font-grid';
 import Header from '@/components/header';
 import { useFavorites } from '@/hooks/use-favorites';
 import { Star } from 'lucide-react';
-import { useCollection } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
-import { useFirestore } from '@/firebase';
+import fontData from '@/data/fonts.json';
 
 export default function FavoritesPage() {
   const { favorites } = useFavorites();
-  const firestore = useFirestore();
-  
-  const fontsCollection = collection(firestore, 'fonts');
-  const favoritesQuery = favorites.length > 0 ? query(fontsCollection, where('id', 'in', favorites)) : null;
+  const [favoriteFonts, setFavoriteFonts] = useState<Font[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const { data: favoriteFonts, loading } = useCollection<Font>(favoritesQuery);
+  useEffect(() => {
+    if (favorites.length > 0) {
+      const fonts = fontData.fonts.filter(font => favorites.includes(font.id));
+      setFavoriteFonts(fonts);
+    } else {
+      setFavoriteFonts([]);
+    }
+    setLoading(false);
+  }, [favorites]);
 
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।');
   const [fontSize, setFontSize] = useState(24);
@@ -38,7 +41,7 @@ export default function FavoritesPage() {
 
         {loading && <div className="text-center">ফন্ট লোড হচ্ছে...</div>}
         
-        {!loading && favoriteFonts && favoriteFonts.length > 0 ? (
+        {!loading && favoriteFonts.length > 0 ? (
           <FontGrid fonts={favoriteFonts} fontSize={fontSize} previewText={previewText} />
         ) : (
           !loading && (

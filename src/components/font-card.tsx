@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -9,8 +8,6 @@ import { Heart, Download } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast"
 import Link from 'next/link';
 import { useFavorites } from '@/hooks/use-favorites';
-import { useFirestore, useDoc } from '@/firebase';
-import { doc, runTransaction } from 'firebase/firestore';
 
 interface FontCardProps {
   font: Font;
@@ -19,10 +16,7 @@ interface FontCardProps {
 }
 
 export default function FontCard({ font: initialFont, previewText, fontSize }: FontCardProps) {
-  const firestore = useFirestore();
-  const fontRef = doc(firestore, 'fonts', initialFont.id);
-  const { data: font } = useDoc<Font>(fontRef, initialFont);
-  
+  const [font, setFont] = useState<Font>(initialFont);
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.includes(font.id);
   
@@ -41,73 +35,39 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
     
   }, [font.cssUrl]);
 
-  const handleLike = async (e: React.MouseEvent) => {
+  const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     
     toggleFavorite(font.id);
+    setFont(prevFont => ({
+        ...prevFont,
+        likes: isFavorited ? prevFont.likes - 1 : prevFont.likes + 1
+    }));
 
-    try {
-      await runTransaction(firestore, async (transaction) => {
-        const fontDoc = await transaction.get(fontRef);
-        if (!fontDoc.exists()) {
-          throw "Document does not exist!";
-        }
-
-        const newLikes = fontDoc.data().likes + (isFavorited ? -1 : 1);
-        transaction.update(fontRef, { likes: newLikes });
-      });
-
-      toast({
+    toast({
         title: isFavorited ? 'পছন্দ থেকে সরানো হয়েছে' : 'পছন্দের তালিকায় যোগ হয়েছে',
         description: `${font.name} ফন্টটি আপনার পছন্দের তালিকা থেকে ${isFavorited ? 'সরানো হয়েছে' : 'যোগ হয়েছে'}।`,
-      });
-
-    } catch (error) {
-      console.error("Transaction failed: ", error);
-      // Revert the local state if transaction fails
-      toggleFavorite(font.id);
-      toast({
-        variant: "destructive",
-        title: "একটি সমস্যা হয়েছে!",
-        description: "পুনরায় চেষ্টা করুন।",
-      });
-    }
+    });
   };
 
-  const handleDownload = async (e: React.MouseEvent) => {
+  const handleDownload = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     
-    try {
-      await runTransaction(firestore, async (transaction) => {
-        const fontDoc = await transaction.get(fontRef);
-        if (!fontDoc.exists()) {
-          throw "Document does not exist!";
-        }
-        const newDownloads = fontDoc.data().downloads + 1;
-        transaction.update(fontRef, { downloads: newDownloads });
-      });
+    setFont(prevFont => ({ ...prevFont, downloads: prevFont.downloads + 1 }));
 
-      const a = document.createElement('a');
-      a.href = font.fileUrl;
-      a.download = '';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+    const a = document.createElement('a');
+    a.href = font.fileUrl;
+    a.download = `${font.id}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-      toast({
+    toast({
         title: "ডাউনলোড শুরু হয়েছে!",
         description: `${font.name} ফন্টটি ডাউনলোড হচ্ছে।`,
-      });
-    } catch (error) {
-        console.error("Transaction failed: ", error);
-        toast({
-            variant: "destructive",
-            title: "ডাউনলোড ব্যর্থ হয়েছে",
-            description: "পুনরায় চেষ্টা করুন।",
-        });
-    }
+    });
   };
   
   return (

@@ -75,12 +75,5 @@
   "auth": {
     "providers": []
   },
-  "firestore": {
-    "/fonts/{fontId}": {
-      "schema": {
-        "$ref": "#/entities/font"
-      },
-      "description": "Stores documents for each available font."
-    }
-  }
+  "firestore": {}
 }

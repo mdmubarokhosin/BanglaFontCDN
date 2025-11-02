@@ -17,7 +17,6 @@ interface FontCardProps {
 }
 
 export default function FontCard({ font, previewText, fontSize }: FontCardProps) {
-  const [likes, setLikes] = useState(font.likes);
   const [downloads, setDownloads] = useState(font.downloads);
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.includes(font.id);
@@ -75,7 +74,7 @@ export default function FontCard({ font, previewText, fontSize }: FontCardProps)
           <div className="flex items-center gap-3 text-sm">
              <button onClick={handleLike} className="flex items-center gap-1.5 text-muted-foreground hover:text-red-500 transition-all p-1 -m-1 active:scale-90">
                 <Heart className={`h-4 w-4 ${isFavorited ? 'text-red-500 fill-current' : ''}`} />
-                <span className="text-xs font-mono">{(likes + (isFavorited ? 1 : 0)).toLocaleString('bn-BD')}</span>
+                <span className="text-xs font-mono">{(font.likes + (isFavorited ? 1 : 0)).toLocaleString('bn-BD')}</span>
             </button>
             <div className="flex items-center gap-1.5 text-muted-foreground">
               <Download className="h-4 w-4" />

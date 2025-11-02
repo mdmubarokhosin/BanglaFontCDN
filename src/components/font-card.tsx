@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Font } from '@/types/font';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, Download } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast"
 import Link from 'next/link';
@@ -21,6 +20,18 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
   const isFavorited = favorites.includes(font.id);
   
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (font.cssUrl) {
+      const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
+      if (!existingLink) {
+        const link = document.createElement('link');
+        link.href = font.cssUrl;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+    }
+  }, [font.cssUrl]);
 
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -85,7 +96,6 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
             {previewText}
           </p>
         </CardContent>
-        {font.cssUrl && <link rel="stylesheet" href={font.cssUrl} media="print" onLoad={(e) => (e.currentTarget.media = 'all')} />}
       </Card>
     </Link>
   );

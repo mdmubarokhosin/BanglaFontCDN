@@ -3,12 +3,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Menu,
   Home,
   Info,
   Star,
   Package,
+  BookOpenCheck,
+  Feather,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -20,9 +23,11 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import Logo from '@/components/icons/Logo';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
     { href: '/', icon: Home, label: 'হোম' },
@@ -41,29 +46,35 @@ export default function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[280px] p-0">
-              <SheetHeader className="border-b p-4">
-                <SheetTitle>
-                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-2xl font-headline font-bold text-primary flex items-center gap-2">
+            <SheetContent side="left" className="w-[280px] bg-card">
+              <SheetHeader className="border-b mb-4">
+                <SheetTitle className='p-4'>
+                    <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-xl font-headline font-bold text-primary flex items-center gap-2">
                         <Logo className="h-8 w-8" />
                         <span>বাংলা ফন্ট সিডিএন</span>
                     </Link>
                 </SheetTitle>
               </SheetHeader>
-              <nav className="mt-4 p-2">
+              <nav className="p-2">
                 <div className="flex flex-col gap-1">
-                  {navLinks.map(link => (
-                     <Button variant="ghost" asChild key={link.href} className="justify-start">
-                        <Link
-                            href={link.href}
-                            onClick={() => setIsDrawerOpen(false)}
-                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:text-foreground"
-                        >
-                            <link.icon className="h-5 w-5" />
-                            <span>{link.label}</span>
-                        </Link>
-                    </Button>
-                  ))}
+                  {navLinks.map(link => {
+                     const isActive = pathname === link.href;
+                     return (
+                        <Button variant="ghost" asChild key={link.href} className={cn(
+                           "justify-start",
+                           isActive && "bg-primary/10 text-primary"
+                        )}>
+                           <Link
+                               href={link.href}
+                               onClick={() => setIsDrawerOpen(false)}
+                               className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
+                           >
+                               <link.icon className="h-5 w-5" />
+                               <span>{link.label}</span>
+                           </Link>
+                       </Button>
+                     )
+                  })}
                 </div>
               </nav>
             </SheetContent>
@@ -85,10 +96,10 @@ export default function Header() {
            ))}
         </div>
 
-        <ThemeToggle />
+        <div className='flex items-center'>
+            <ThemeToggle />
+        </div>
       </div>
     </header>
   );
 }
-
-  

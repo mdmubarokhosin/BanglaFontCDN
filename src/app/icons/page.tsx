@@ -1,17 +1,29 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Header from '@/components/header';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Search, Copy } from 'lucide-react';
-import allIcons from '@/data/lucide-icons';
+import { Search, Copy, icons } from 'lucide-react';
+import type { LucideProps } from 'lucide-react';
+import iconData from '@/data/lucide-icons.json';
+
+type IconName = keyof typeof icons;
+
+interface IconInfo {
+  name: string;
+  banglaName: string;
+}
+
+const iconComponentMap = icons as { [key: string]: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>> };
 
 export default function IconsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const { toast } = useToast();
+
+  const allIcons: IconInfo[] = useMemo(() => iconData, []);
 
   const filteredIcons = allIcons.filter(icon => 
     icon.banglaName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -55,7 +67,8 @@ export default function IconsPage() {
           {filteredIcons.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {filteredIcons.map((icon) => {
-                const IconComponent = icon.component;
+                const IconComponent = iconComponentMap[icon.name as IconName];
+                if (!IconComponent) return null;
                 return (
                   <Card
                     key={icon.name}
@@ -87,3 +100,5 @@ export default function IconsPage() {
     </div>
   );
 }
+
+    

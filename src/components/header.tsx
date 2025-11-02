@@ -27,19 +27,19 @@ export default function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[280px]">
-              <SheetHeader>
+            <SheetContent side="left" className="w-[280px] p-4">
+              <SheetHeader className="border-b pb-4 mb-4">
                 <SheetTitle>
                     <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-2xl font-headline font-bold text-primary">
                         বাংলা ফন্ট সিডিএন
                     </Link>
                 </SheetTitle>
               </SheetHeader>
-              <nav className="mt-8 flex flex-col gap-4">
+              <nav className="mt-8 flex flex-col gap-2">
                 <Link
                   href="/"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:bg-muted hover:text-foreground"
                 >
                   <Home className="h-5 w-5" />
                   <span>হোম</span>
@@ -47,7 +47,7 @@ export default function Header() {
                 <Link
                   href="/about"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:bg-muted hover:text-foreground"
                 >
                   <Info className="h-5 w-5" />
                   <span>আমাদের সম্পর্কে</span>
@@ -55,7 +55,7 @@ export default function Header() {
                 <Link
                   href="/documentation"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:bg-muted hover:text-foreground"
                 >
                   <BookText className="h-5 w-5" />
                   <span>ডকুমেন্টেশন</span>
@@ -63,7 +63,7 @@ export default function Header() {
                 <Link
                   href="/favorites"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-foreground/80 transition-all hover:bg-muted hover:text-foreground"
                 >
                   <Star className="h-5 w-5" />
                   <span>পছন্দের ফন্ট</span>

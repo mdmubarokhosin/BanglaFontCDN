@@ -171,14 +171,14 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
         
         <div className="border-b mb-8">
             <h2 className="text-2xl font-bold mb-4">স্টাইলসমূহ</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8" style={{ fontFamily: font.fontFamily }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
               {font.styles.map((style) => {
                 const weight = styleNameToWeight[style] || 400;
                 return (
                   <div key={style} className="bg-card border rounded-lg p-4 flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-baseline mb-3">
-                        <h4 className="font-semibold" style={{ fontFamily: font.fontFamily }}>{style}</h4>
+                        <h4 className="font-semibold" style={{ fontFamily: font.fontFamily, fontWeight: weight }}>{style}</h4>
                         <span className="text-sm text-muted-foreground">{weight}</span>
                       </div>
                       <p className="text-2xl break-words" style={{ fontFamily: font.fontFamily, fontWeight: weight, fontSize: '24px' }}>

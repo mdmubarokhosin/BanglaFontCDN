@@ -27,14 +27,25 @@ export default function DocumentationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <aside className="md:col-span-1 md:sticky md:top-24 h-fit">
-              <h3 className="text-lg font-semibold mb-4 font-headline flex items-center gap-2"><BookText className="w-5 h-5"/>সুচিপত্র</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#introduction" className="hover:text-primary transition-colors">ভূমিকা</a></li>
-                <li><a href="#default-usage" className="hover:text-primary transition-colors">১. বাংলা ফন্ট ব্যবহার (ডিফল্ট)</a></li>
-                <li><a href="#minified-usage" className="hover:text-primary transition-colors">২. বাংলা ফন্ট (মিনিফায়েড)</a></li>
-                <li><a href="#english-font" className="hover:text-primary transition-colors">৩. ইংরেজি ফন্টসহ ব্যবহার</a></li>
-                <li><a href="#full-example" className="hover:text-primary transition-colors">৪. সম্পূর্ণ HTML উদাহরণ</a></li>
-              </ul>
+              <div className="border bg-card rounded-lg p-4">
+                <h3 className="text-lg font-semibold mb-4 font-headline flex items-center gap-2"><BookText className="w-5 h-5 text-primary"/>সুচিপত্র</h3>
+                <ul className="space-y-2">
+                  {[
+                    { href: '#introduction', title: 'ভূমিকা' },
+                    { href: '#default-usage', title: '১. বাংলা ফন্ট ব্যবহার' },
+                    { href: '#minified-usage', title: '২. মিনিফায়েড ভার্সন' },
+                    { href: '#english-font', title: '৩. ইংরেজি ফন্টসহ' },
+                    { href: '#full-example', title: '৪. সম্পূর্ণ উদাহরণ' },
+                  ].map(item => (
+                    <li key={item.href}>
+                      <a href={item.href} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-all duration-200 group">
+                        <span className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-primary transition-colors duration-200"></span>
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </aside>
 
             <div className="md:col-span-3 space-y-12">

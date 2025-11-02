@@ -1,0 +1,86 @@
+
+{
+  "entities": {
+    "font": {
+      "title": "Font",
+      "description": "Represents a single font available in the CDN.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier for the font."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the font."
+        },
+        "designer": {
+          "type": "string",
+          "description": "The name of the font designer."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the font (e.g., Unicode, Serif)."
+        },
+        "styles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Available font styles/weights."
+        },
+        "likes": {
+          "type": "number",
+          "description": "The number of likes the font has received."
+        },
+        "downloads": {
+          "type": "number",
+          "description": "The number of times the font has been downloaded."
+        },
+        "fileUrl": {
+            "type": "string",
+            "description": "The URL to download the font file."
+        },
+        "importUrl": {
+            "type": "string",
+            "description": "The CSS @import url."
+        },
+        "linkUrl": {
+            "type": "string",
+            "description": "The HTML <link> tag."
+        },
+        "cssUrl": {
+            "type": "string",
+            "description": "The URL for the font's CSS file."
+        },
+        "fontFamily": {
+            "type": "string",
+            "description": "The CSS font-family value."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "designer",
+        "category",
+        "styles",
+        "likes",
+        "downloads",
+        "fileUrl",
+        "cssUrl",
+        "fontFamily"
+      ]
+    }
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+    "/fonts/{fontId}": {
+      "schema": {
+        "$ref": "#/entities/font"
+      },
+      "description": "Stores documents for each available font."
+    }
+  }
+}

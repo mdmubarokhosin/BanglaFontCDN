@@ -2,23 +2,26 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { default as fontData } from '@/data/fonts.json';
 import type { Font } from '@/types/font';
 import FontGrid from '@/components/font-grid';
 import Header from '@/components/header';
 import { useFavorites } from '@/hooks/use-favorites';
 import { Star } from 'lucide-react';
+import { useCollection } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import { useFirestore } from '@/firebase';
 
 export default function FavoritesPage() {
   const { favorites } = useFavorites();
-  const [favoriteFonts, setFavoriteFonts] = useState<Font[]>([]);
+  const firestore = useFirestore();
+  
+  const fontsCollection = collection(firestore, 'fonts');
+  const favoritesQuery = favorites.length > 0 ? query(fontsCollection, where('id', 'in', favorites)) : null;
+
+  const { data: favoriteFonts, loading } = useCollection<Font>(favoritesQuery);
+
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।');
   const [fontSize, setFontSize] = useState(24);
-
-  useEffect(() => {
-    const filtered = fontData.fonts.filter(font => favorites.includes(font.id));
-    setFavoriteFonts(filtered);
-  }, [favorites]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -33,13 +36,17 @@ export default function FavoritesPage() {
             <p className="text-muted-foreground text-sm mt-2">আপনার পছন্দের তালিকায় থাকা ফন্টগুলো এখানে দেখুন।</p>
         </div>
 
-        {favoriteFonts.length > 0 ? (
+        {loading && <div className="text-center">ফন্ট লোড হচ্ছে...</div>}
+        
+        {!loading && favoriteFonts && favoriteFonts.length > 0 ? (
           <FontGrid fonts={favoriteFonts} fontSize={fontSize} previewText={previewText} />
         ) : (
-          <div className="text-center py-16 text-muted-foreground">
-            <h2 className="text-2xl font-headline">আপনার পছন্দের তালিকা এখন খালি।</h2>
-            <p>হার্ট ❤️ আইকনে ক্লিক করে ফন্ট পছন্দের তালিকায় যোগ করুন।</p>
-          </div>
+          !loading && (
+            <div className="text-center py-16 text-muted-foreground">
+              <h2 className="text-2xl font-headline">আপনার পছন্দের তালিকা এখন খালি।</h2>
+              <p>হার্ট ❤️ আইকনে ক্লিক করে ফন্ট পছন্দের তালিকায় যোগ করুন।</p>
+            </div>
+          )
         )}
       </main>
 

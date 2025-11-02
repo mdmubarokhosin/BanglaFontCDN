@@ -1,28 +1,35 @@
 'use client';
 
 import { useState } from 'react';
-import { default as fontData } from '@/data/fonts.json';
 import type { Font } from '@/types/font';
 import FontToolbar from '@/components/font-toolbar';
 import FontGrid from '@/components/font-grid';
 import Header from '@/components/header';
+import { useCollection } from '@/firebase';
+import { collection, query } from 'firebase/firestore';
+import { useFirestore } from '@/firebase';
 
 export default function Home() {
-  const [fonts] = useState<Font[]>(fontData.fonts);
+  const firestore = useFirestore();
+  const fontsCollection = collection(firestore, 'fonts');
+  const { data: fonts, loading } = useCollection<Font>(query(fontsCollection));
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [fontSize, setFontSize] = useState(24);
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।');
   const [selectedCategory, setSelectedCategory] = useState('all');
   
-  const allCategories = ['all', ...Array.from(new Set(fonts.map(f => f.category)))];
+  const allCategories = fonts ? ['all', ...Array.from(new Set(fonts.map(f => f.category)))] : ['all'];
 
   const filteredFonts = fonts
-    .filter((font) =>
-      font.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    .filter((font) => 
-      selectedCategory === 'all' ? true : font.category === selectedCategory
-    );
+    ? fonts
+        .filter((font) =>
+          font.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        .filter((font) => 
+          selectedCategory === 'all' ? true : font.category === selectedCategory
+        )
+    : [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -45,7 +52,13 @@ export default function Home() {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-        <FontGrid fonts={filteredFonts} fontSize={fontSize} previewText={previewText} />
+        {loading ? (
+          <div className="text-center py-16 text-muted-foreground">
+            <p>ফন্ট লোড হচ্ছে...</p>
+          </div>
+        ) : (
+          <FontGrid fonts={filteredFonts} fontSize={fontSize} previewText={previewText} />
+        )}
       </main>
 
       <footer className="bg-card border-t mt-8 py-6">

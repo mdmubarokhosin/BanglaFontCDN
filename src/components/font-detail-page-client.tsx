@@ -13,6 +13,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import Header from '@/components/header';
+import { useDoc, useFirestore } from '@/firebase';
+import { doc } from 'firebase/firestore';
 
 interface FontDetailPageClientProps {
     font: Font;
@@ -42,7 +44,11 @@ const styleNameToWeight: { [key: string]: number } = {
 };
 
 
-export default function FontDetailPageClient({ font }: FontDetailPageClientProps) {
+export default function FontDetailPageClient({ font: initialFont }: FontDetailPageClientProps) {
+  const firestore = useFirestore();
+  const fontRef = doc(firestore, 'fonts', initialFont.id);
+  const { data: font } = useDoc<Font>(fontRef, initialFont);
+
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা');
   const [fontSize, setFontSize] = useState(48);
   const [embedType, setEmbedType] = useState('link');

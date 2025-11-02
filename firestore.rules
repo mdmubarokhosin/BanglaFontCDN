@@ -1,0 +1,17 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    match /fonts/{fontId} {
+      allow read: if true;
+      allow write: if isSignedIn(); // Or more specific rules, e.g., allow only updates to likes/downloads
+    }
+  }
+}

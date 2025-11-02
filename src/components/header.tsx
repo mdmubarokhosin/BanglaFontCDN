@@ -46,33 +46,32 @@ export default function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[280px] bg-card">
-              <SheetHeader className="border-b mb-4">
-                <SheetTitle className='p-4'>
+            <SheetContent side="left" className="w-[280px] bg-card p-4">
+              <SheetHeader className="mb-4">
+                <SheetTitle>
                     <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-xl font-headline font-bold text-primary flex items-center gap-2">
                         <Logo className="h-8 w-8" />
                         <span>বাংলা ফন্ট সিডিএন</span>
                     </Link>
                 </SheetTitle>
               </SheetHeader>
-              <nav className="p-2">
-                <div className="flex flex-col gap-1">
+              <nav>
+                <div className="flex flex-col gap-2">
                   {navLinks.map(link => {
                      const isActive = pathname === link.href;
                      return (
-                        <Button variant="ghost" asChild key={link.href} className={cn(
-                           "justify-start",
-                           isActive && "bg-primary/10 text-primary"
-                        )}>
-                           <Link
-                               href={link.href}
-                               onClick={() => setIsDrawerOpen(false)}
-                               className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all"
-                           >
-                               <link.icon className="h-5 w-5" />
-                               <span>{link.label}</span>
-                           </Link>
-                       </Button>
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsDrawerOpen(false)}
+                            className={cn(
+                                "flex items-center gap-3 rounded-lg px-4 py-3 text-foreground transition-all hover:bg-accent/50 hover:text-accent-foreground hover:scale-[1.02] shadow-sm border border-transparent active:scale-[0.98]",
+                                isActive ? "bg-primary/10 text-primary border-primary/20 shadow-lg" : "bg-muted/30"
+                            )}
+                        >
+                            <link.icon className="h-5 w-5" />
+                            <span className="font-medium">{link.label}</span>
+                        </Link>
                      )
                   })}
                 </div>

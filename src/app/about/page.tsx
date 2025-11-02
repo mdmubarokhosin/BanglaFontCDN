@@ -272,6 +272,19 @@ export default function AboutPage() {
                             </p>
                         </CardContent>
                     </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2 font-headline">
+                                <Package className="w-6 h-6 text-primary"/>
+                                আইকন কপিরাইট এবং লাইসেন্স
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground leading-relaxed">
+                                এই ওয়েবসাইটে ব্যবহৃত বেশিরভাগ আইকন <Link href="https://lucide.dev/" target="_blank" className="text-primary underline">Lucide</Link> লাইব্রেরি থেকে নেওয়া, যা <Link href="https://spdx.org/licenses/ISC.html" target="_blank" className="text-primary underline">ISC License</Link>-এর অধীনে লাইসেন্সপ্রাপ্ত। আমাদের তৈরি কাস্টম আইকনগুলো (যেমন লোগো, পদক) ওয়েবসাইটের সোর্স কোডের মতোই <Link href="https://opensource.org/licenses/MIT" target="_blank" className="text-primary underline">MIT License</Link>-এর অধীনে উপলব্ধ।
+                            </p>
+                        </CardContent>
+                    </Card>
                 </div>
             </TabsContent>
 

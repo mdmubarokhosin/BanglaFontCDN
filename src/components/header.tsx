@@ -70,8 +70,13 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
-           {/* Future desktop navigation links can go here */}
+        <div className="hidden md:flex items-center gap-2">
+           <Button variant="ghost" asChild>
+              <Link href="/">হোম</Link>
+           </Button>
+            <Button variant="ghost" asChild>
+              <Link href="/about">আমাদের সম্পর্কে</Link>
+           </Button>
         </div>
 
         <ThemeToggle />

@@ -10,8 +10,6 @@ import {
   Info,
   Star,
   Package,
-  BookOpenCheck,
-  Feather,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -46,7 +44,7 @@ export default function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-auto bg-card p-4">
+            <SheetContent side="left" className="bg-card p-4">
               <SheetHeader className="mb-4">
                 <SheetTitle>
                     <Link href="/" onClick={() => setIsDrawerOpen(false)} className="text-xl font-headline font-bold text-primary flex items-center justify-center gap-2">

@@ -18,7 +18,7 @@ export default function DocumentationPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary font-headline tracking-tight">
-              ডকুমেন্টেশন
+              ব্যবহারবিধি
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
               বাংলা ফন্ট সিডিএন ব্যবহার করার সম্পূর্ণ নির্দেশিকা।

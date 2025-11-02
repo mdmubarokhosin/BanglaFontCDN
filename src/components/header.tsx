@@ -89,6 +89,9 @@ export default function Header() {
             <Button variant="ghost" asChild>
                 <Link href="/documentation">ডকুমেন্টেশন</Link>
             </Button>
+             <Button variant="ghost" asChild>
+                <Link href="/favorites">পছন্দের ফন্ট</Link>
+            </Button>
         </div>
 
         <ThemeToggle />

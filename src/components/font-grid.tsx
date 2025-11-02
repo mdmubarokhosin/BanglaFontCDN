@@ -1,6 +1,9 @@
 
+'use client';
+
 import type { Font } from '@/types/font';
 import FontCard from './font-card';
+import { useFavorites } from '@/hooks/use-favorites';
 
 interface FontGridProps {
   fonts: Font[];
@@ -9,6 +12,7 @@ interface FontGridProps {
 }
 
 export default function FontGrid({ fonts, fontSize, previewText }: FontGridProps) {
+  
   if (fonts.length === 0) {
     return (
       <div className="text-center py-16 text-muted-foreground">
@@ -26,5 +30,3 @@ export default function FontGrid({ fonts, fontSize, previewText }: FontGridProps
     </div>
   );
 }
-
-    

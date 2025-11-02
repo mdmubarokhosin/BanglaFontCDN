@@ -5,6 +5,7 @@ import Header from '@/components/header';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const features = [
   {
@@ -71,14 +72,19 @@ export default function AboutPage() {
           </div>
 
           <Tabs defaultValue="about" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 mb-8 h-auto">
-              <TabsTrigger value="about">আমাদের সম্পর্কে</TabsTrigger>
-              <TabsTrigger value="features">ফিচারসমূহ</TabsTrigger>
-              <TabsTrigger value="usage">ব্যবহারবিধি</TabsTrigger>
-              <TabsTrigger value="tech">কি দিয়ে তৈরি</TabsTrigger>
-              <TabsTrigger value="license">লাইসেন্স</TabsTrigger>
-              <TabsTrigger value="contributors">অবদানকারী</TabsTrigger>
-            </TabsList>
+            <div className="relative w-full">
+              <ScrollArea className="max-w-full whitespace-nowrap rounded-md">
+                <TabsList className="mb-8">
+                  <TabsTrigger value="about">আমাদের সম্পর্কে</TabsTrigger>
+                  <TabsTrigger value="features">ফিচারসমূহ</TabsTrigger>
+                  <TabsTrigger value="usage">ব্যবহারবিধি</TabsTrigger>
+                  <TabsTrigger value="tech">কি দিয়ে তৈরি</TabsTrigger>
+                  <TabsTrigger value="license">লাইসেন্স</TabsTrigger>
+                  <TabsTrigger value="contributors">অবদানকারী</TabsTrigger>
+                </TabsList>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
+            </div>
 
             <TabsContent value="about">
                 <div className="space-y-16 mt-12">
@@ -308,5 +314,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-  

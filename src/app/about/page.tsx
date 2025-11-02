@@ -254,8 +254,11 @@ export default function AboutPage() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground leading-relaxed">
+                             <p className="text-muted-foreground leading-relaxed mb-4">
                                 এই ওয়েবসাইটে প্রদর্শিত সমস্ত বাংলা ফন্ট <Link href="https://openfontlicense.org/" target="_blank" className="text-primary underline">SIL Open Font License (OFL)</Link>-এর অধীনে লাইসেন্সপ্রাপ্ত। এর মানে হলো, আপনি এই ফন্টগুলো আপনার ব্যক্তিগত বা বাণিজ্যিক যেকোনো প্রকল্পে বিনামূল্যে ব্যবহার, পরিবর্তন এবং বিতরণ করতে পারবেন। তবে, লাইসেন্সের শর্তাবলী অনুযায়ী, ফন্ট বিক্রি করা বা লাইসেন্স পরিবর্তন করা যাবে না।
+                            </p>
+                            <p className="text-muted-foreground leading-relaxed">
+                                কিছু ফন্ট <Link href="https://www.gnu.org/licenses/gpl.html" target="_blank" className="text-primary underline">GNU General Public License</Link> এর অধীনেও লাইসেন্সপ্রাপ্ত হতে পারে, সাথে একটি <Link href="https://www.gnu.org/licenses/gpl-faq.html#FontException" target="_blank" className="text-primary underline">ফন্ট ব্যতিক্রম ধারা</Link> থাকতে পারে। প্রতিটি ফন্টের বিবরণ পেজে নির্দিষ্ট লাইসেন্সের তথ্য দেওয়া থাকবে।
                             </p>
                         </CardContent>
                     </Card>

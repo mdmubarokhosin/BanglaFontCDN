@@ -83,6 +83,20 @@
         "linkUrl": "<link href='https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap' rel='stylesheet'>",
         "cssUrl": "https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap",
         "fontFamily": "'Baloo Da 2', sans-serif"
+    },
+    {
+      "id": "ekushey-azad",
+      "name": "একুশে আজাদ",
+      "designer": "একুশে",
+      "category": "Sans Serif",
+      "styles": ["নিয়মিত", "বোল্ড"],
+      "likes": 180,
+      "downloads": 3200,
+      "fileUrl": "#",
+      "importUrl": "@import url('https://banglawebfonts.pages.dev/css/ekushey-azad.css');",
+      "linkUrl": "<link href=\"https://banglawebfonts.pages.dev/css/ekushey-azad.css\" rel=\"stylesheet\">",
+      "cssUrl": "https://banglawebfonts.pages.dev/css/ekushey-azad.css",
+      "fontFamily": "'Ekushey Azad', sans-serif"
     }
   ]
 }

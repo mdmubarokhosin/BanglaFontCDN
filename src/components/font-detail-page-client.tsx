@@ -58,14 +58,17 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
 
   const getEmbedCode = () => {
     const preloadTag = includePreload ? `<link rel="preload" href="${font.cssUrl}" as="style" />\n` : '';
-    if (embedType === 'link') {
-        return `${preloadTag}<link href='${font.cssUrl}' rel='stylesheet'>`;
+    if (embedType === 'link' && font.linkUrl) {
+        return `${preloadTag}${font.linkUrl}`;
     }
-    return `@import url('${font.cssUrl}');`;
+    if (embedType === 'import' && font.importUrl) {
+      return font.importUrl;
+    }
+    return 'ব্যবহারের কোড উপলব্ধ নয়।';
   }
   
   const getCssCode = () => {
-    return `body {\n  font-family: '${font.fontFamily}', sans-serif;\n  /* Add other styles like font-weight, font-style */\n}`;
+    return `body {\n  font-family: ${font.fontFamily};\n  /* Add other styles like font-weight, font-style */\n}`;
   }
 
   const minifiedCssUrl = font.cssUrl.includes('.min.css') ? font.cssUrl : font.cssUrl.replace('.css', '.min.css');
@@ -206,7 +209,11 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
                             <div className="flex justify-between"><strong className="text-muted-foreground">স্টাইল</strong> <span className="text-right">{font.styles.length}</span></div>
                             <div className="pt-2">
                               <strong className="text-muted-foreground">লাইসেন্স</strong>
-                              <p className="text-xs mt-1">This font is licensed under the SIL Open Font License. You can use it freely in your products & projects. More info at <a href="https://openfontlicense.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">openfontlicense.org</a>.</p>
+                              <p className="text-xs mt-1">
+                                {font.id === 'ekushey-azad'
+                                  ? 'This font is licensed under the GNU General Public License with a font exception clause. You can use and embed this font in web pages and documents. Learn more at gnu.org/licenses/gpl and font exception clause.'
+                                  : `This font is licensed under the SIL Open Font License. You can use it freely in your products & projects. More info at openfontlicense.org`}
+                              </p>
                             </div>
                         </div>
                     </div>

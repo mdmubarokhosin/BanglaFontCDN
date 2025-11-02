@@ -27,9 +27,10 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
     e.preventDefault();
     
     toggleFavorite(font.id);
+    const newLikes = isFavorited ? font.likes - 1 : font.likes + 1;
     setFont(prevFont => ({
         ...prevFont,
-        likes: isFavorited ? prevFont.likes - 1 : prevFont.likes + 1
+        likes: newLikes
     }));
 
     toast({
@@ -84,7 +85,7 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
             {previewText}
           </p>
         </CardContent>
-        {font.cssUrl && <link rel="stylesheet" href={font.cssUrl} media="print" onLoad="this.media='all'" />}
+        {font.cssUrl && <link rel="stylesheet" href={font.cssUrl} media="print" onLoad={(e) => (e.currentTarget.media = 'all')} />}
       </Card>
     </Link>
   );

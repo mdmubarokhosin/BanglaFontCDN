@@ -41,7 +41,7 @@ export default async function FontDetailPage({ params }: FontDetailPageProps) {
 
   return (
     <>
-      <link rel="stylesheet" href={font.cssUrl} />
+      <link rel="stylesheet" href={font.cssUrl} media="all" />
       <FontDetailPageClient font={font} />
     </>
   );

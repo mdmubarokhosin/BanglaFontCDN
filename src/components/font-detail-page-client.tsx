@@ -48,18 +48,6 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
   const [includePreload, setIncludePreload] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    if (font?.cssUrl) {
-      const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
-      if (!existingLink) {
-        const link = document.createElement('link');
-        link.href = font.cssUrl;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      }
-    }
-  }, [font]);
-
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
     toast({

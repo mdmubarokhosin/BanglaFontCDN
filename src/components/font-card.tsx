@@ -22,16 +22,19 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
   const { toast } = useToast();
 
   useEffect(() => {
-    if (font.cssUrl) {
-      const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
-      if (!existingLink) {
-        const link = document.createElement('link');
-        link.href = font.cssUrl;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      }
-    }
+    // This effect ensures that when navigating to a font's detail page, 
+    // the CSS is loaded and the font displays correctly.
+    const preloadLink = document.createElement('link');
+    preloadLink.href = font.cssUrl;
+    preloadLink.rel = 'preload';
+    preloadLink.as = 'style';
+    document.head.appendChild(preloadLink);
+
+    return () => {
+        document.head.removeChild(preloadLink);
+    };
   }, [font.cssUrl]);
+
 
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();

@@ -49,6 +49,7 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
   const { toast } = useToast();
 
   useEffect(() => {
+    // Inject the font stylesheet into the main document's head for the glyphs and styles section
     if (font?.cssUrl) {
       const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
       if (!existingLink) {
@@ -81,6 +82,35 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
   }
 
   const minifiedCssUrl = font.cssUrl.includes('.min.css') ? font.cssUrl : font.cssUrl.replace('.css', '.min.css');
+
+  const iframeContent = `
+    <html>
+      <head>
+        <link rel="stylesheet" href="${font.cssUrl}" />
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap');
+          body {
+            font-family: ${font.fontFamily}, 'Noto Serif Bengali', serif;
+            font-size: ${fontSize}px;
+            text-align: center;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: hsl(var(--foreground));
+            background-color: transparent;
+            word-break: break-word;
+            line-height: 1.6;
+          }
+        </style>
+      </head>
+      <body>
+        ${previewText || 'আমার সোনার বাংলা'}
+      </body>
+    </html>
+  `;
 
 
   return (
@@ -124,11 +154,18 @@ export default function FontDetailPageClient({ font }: FontDetailPageClientProps
                 </div>
             </div>
 
-            <div 
-              className="text-center w-full break-words bg-muted/20 p-8 rounded-lg"
-              style={{ fontFamily: font.fontFamily, fontSize: `${fontSize}px`, lineHeight: 1.6 }}
-            >
-              {previewText || 'আমার সোনার বাংলা'}
+            <div className="text-center w-full break-words bg-muted/20 p-0 rounded-lg overflow-hidden">
+              <iframe
+                srcDoc={iframeContent}
+                style={{
+                    width: '100%',
+                    border: 'none',
+                    minHeight: '200px',
+                    backgroundColor: 'transparent',
+                }}
+                title={`Preview for ${font.name}`}
+                sandbox="allow-scripts allow-same-origin"
+              />
             </div>
         </div>
         

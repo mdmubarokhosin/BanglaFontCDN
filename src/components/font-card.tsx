@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { Font } from '@/types/font';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, Download } from 'lucide-react';
@@ -20,19 +20,6 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
   const isFavorited = favorites.includes(font.id);
   
   const { toast } = useToast();
-
-  useEffect(() => {
-    if (font?.cssUrl) {
-      const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
-      if (!existingLink) {
-        const link = document.createElement('link');
-        link.href = font.cssUrl;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      }
-    }
-  }, [font.cssUrl]);
-
 
   const handleLike = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -69,6 +56,35 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
         description: `${font.name} ফন্টটি ডাউনলোড হচ্ছে।`,
     });
   };
+
+  const iframeContent = `
+    <html>
+      <head>
+        <link rel="stylesheet" href="${font.cssUrl}" />
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap');
+          body {
+            font-family: ${font.fontFamily}, 'Noto Serif Bengali', serif;
+            font-size: ${fontSize}px;
+            text-align: center;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: hsl(var(--foreground));
+            background-color: transparent;
+            word-break: break-word;
+            line-height: 1.6;
+          }
+        </style>
+      </head>
+      <body>
+        ${previewText}
+      </body>
+    </html>
+  `;
   
   return (
     <Link href={`/font/${font.id}`} className="block">
@@ -89,13 +105,19 @@ export default function FontCard({ font: initialFont, previewText, fontSize }: F
             </div>
           </div>
         </CardHeader>
-        <CardContent className="flex-grow flex items-center justify-center p-6 min-h-[150px]">
-          <p
-            className="text-center w-full break-words"
-            style={{ fontFamily: font.fontFamily, fontSize: `${fontSize}px` }}
-          >
-            {previewText}
-          </p>
+        <CardContent className="flex-grow flex items-center justify-center p-0 min-h-[150px]">
+          <iframe
+              srcDoc={iframeContent}
+              style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  minHeight: '150px',
+                  backgroundColor: 'transparent',
+              }}
+              title={`Preview for ${font.name}`}
+              sandbox="allow-scripts allow-same-origin"
+          />
         </CardContent>
       </Card>
     </Link>

@@ -37,7 +37,7 @@ export default function IconsPage() {
             >
                 <CardContent className="p-0 flex flex-col items-center justify-center gap-3">
                     <Logo className="w-16 h-16 transition-transform duration-300 group-hover:scale-110" />
-                    <p className="text-sm text-muted-foreground group-hover:text-primary truncate">লোগো</p>
+                    <p className="text-sm text-muted-foreground group-hover:text-primary truncate">বাংলা লেখা বৃদ্ধি</p>
                 </CardContent>
             </Card>
           </div>

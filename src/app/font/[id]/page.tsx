@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: FontDetailPageProps): Promise
     title: `${font.name} - বাংলা ফন্ট সিডিএন`,
     description: `Details for ${font.name} font. Designed by ${font.designer}.`,
     other: {
-      'font-preload-stylesheet': font.cssUrl
+       'stylesheet': font.cssUrl,
     }
   }
 }
@@ -40,9 +40,6 @@ export default async function FontDetailPage({ params }: FontDetailPageProps) {
   }
 
   return (
-    <>
-      <link rel="stylesheet" href={font.cssUrl} media="all" />
       <FontDetailPageClient font={font} />
-    </>
   );
 }

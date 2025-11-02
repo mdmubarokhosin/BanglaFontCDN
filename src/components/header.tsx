@@ -1,8 +1,9 @@
+
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Home, Info, Star } from 'lucide-react';
+import { Menu, X, Home, Info, Star, BookText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import {
@@ -52,6 +53,14 @@ export default function Header() {
                   <span>আমাদের সম্পর্কে</span>
                 </Link>
                 <Link
+                  href="/documentation"
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
+                >
+                  <BookText className="h-5 w-5" />
+                  <span>ডকুমেন্টেশন</span>
+                </Link>
+                <Link
                   href="/favorites"
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center gap-3 rounded-md p-2 text-lg font-medium hover:bg-muted"
@@ -77,6 +86,9 @@ export default function Header() {
             <Button variant="ghost" asChild>
               <Link href="/about">আমাদের সম্পর্কে</Link>
            </Button>
+            <Button variant="ghost" asChild>
+                <Link href="/documentation">ডকুমেন্টেশন</Link>
+            </Button>
         </div>
 
         <ThemeToggle />

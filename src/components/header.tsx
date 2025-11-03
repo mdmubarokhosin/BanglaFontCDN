@@ -10,6 +10,7 @@ import {
   Info,
   Star,
   Package,
+  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -31,6 +32,7 @@ export default function Header() {
     { href: '/', icon: Home, label: 'হোম' },
     { href: '/about', icon: Info, label: 'আমাদের সম্পর্কে' },
     { href: '/icons', icon: Package, label: 'আইকন' },
+    { href: '/font-pairing', icon: Sparkles, label: 'AI ফন্ট পেয়ারিং' },
     { href: '/favorites', icon: Star, label: 'পছন্দের ফন্ট' },
   ];
 

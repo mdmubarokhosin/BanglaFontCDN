@@ -19,7 +19,7 @@ export type FontPairingInput = z.infer<typeof FontPairingInputSchema>;
 
 const FontPairingOutputSchema = z.object({
   englishFontName: z.string().describe('The name of the suggested English font from Google Fonts.'),
-  reason: z.string().describe('A brief explanation for why this font is a good pairing.'),
+  reason: z.string().describe('A brief explanation in Bengali for why this font is a good pairing.'),
   googleFontLink: z.string().describe('The full @import URL to get the suggested English font from Google Fonts.'),
 });
 export type FontPairingOutput = z.infer<typeof FontPairingOutputSchema>;
@@ -43,7 +43,8 @@ Consider the following characteristics of the Bengali font:
 
 Based on these characteristics, such as stroke contrast, weight, and overall mood (e.g., formal, casual, decorative), recommend an English font from Google Fonts that complements it harmoniously.
 
-Provide the name of the English font, a brief reason for your choice, and the Google Fonts @import URL for the regular 400 weight.
+Provide the name of the English font, a brief reason for your choice in the Bengali language, and the Google Fonts @import URL for the regular 400 weight.
+The 'reason' field in the output must be in Bengali.
 `,
 });
 

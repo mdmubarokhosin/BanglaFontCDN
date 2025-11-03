@@ -11,4 +11,5 @@ export interface Font {
   linkUrl: string;
   cssUrl: string;
   fontFamily: string;
+  dateAdded: string;
 }

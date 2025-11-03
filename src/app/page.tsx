@@ -15,6 +15,7 @@ export default function Home() {
   const [fontSize, setFontSize] = useState(24);
   const [previewText, setPreviewText] = useState('আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('popular');
 
   useEffect(() => {
     // Simulate loading fonts from a local source
@@ -24,7 +25,7 @@ export default function Home() {
   
   const allCategories = fonts ? ['all', ...Array.from(new Set(fonts.map(f => f.category)))] : ['all'];
 
-  const filteredFonts = fonts
+  const filteredAndSortedFonts = fonts
     ? fonts
         .filter((font) =>
           font.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -32,6 +33,18 @@ export default function Home() {
         .filter((font) => 
           selectedCategory === 'all' ? true : font.category === selectedCategory
         )
+        .sort((a, b) => {
+          switch (sortBy) {
+            case 'popular':
+              return b.likes - a.likes;
+            case 'trending':
+              return b.downloads - a.downloads;
+            case 'newest':
+              return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+            default:
+              return 0;
+          }
+        })
     : [];
 
   return (
@@ -54,13 +67,15 @@ export default function Home() {
           categories={allCategories}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
         />
         {loading ? (
           <div className="text-center py-16 text-muted-foreground">
             <p>ফন্ট লোড হচ্ছে...</p>
           </div>
         ) : (
-          <FontGrid fonts={filteredFonts} fontSize={fontSize} previewText={previewText} />
+          <FontGrid fonts={filteredAndSortedFonts} fontSize={fontSize} previewText={previewText} />
         )}
       </main>
 

@@ -12,7 +12,8 @@
       "importUrl": "@import url('https://cdnmx.pages.dev/assets/fonts/kalpurush/font.css');",
       "linkUrl": "<link href='https://cdnmx.pages.dev/assets/fonts/kalpurush/font.css' rel='stylesheet'>",
       "cssUrl": "https://cdnmx.pages.dev/assets/fonts/kalpurush/font.css",
-      "fontFamily": "Kalpurush, sans-serif"
+      "fontFamily": "Kalpurush, sans-serif",
+      "dateAdded": "2023-01-10"
     },
     {
       "id": "solaimanlipi",
@@ -26,7 +27,8 @@
       "importUrl": "@import url('https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css');",
       "linkUrl": "<link href='https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css' rel='stylesheet'>",
       "cssUrl": "https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css",
-      "fontFamily": "SolaimanLipi, sans-serif"
+      "fontFamily": "SolaimanLipi, sans-serif",
+      "dateAdded": "2023-02-15"
     },
     {
       "id": "siyamrupali",
@@ -40,7 +42,8 @@
       "importUrl": "@import url('https://cdnmx.pages.dev/assets/fonts/siyam_rupali/font.css');",
       "linkUrl": "<link href='https://cdnmx.pages.dev/assets/fonts/siyam_rupali/font.css' rel='stylesheet'>",
       "cssUrl": "https://cdnmx.pages.dev/assets/fonts/siyam_rupali/font.css",
-      "fontFamily": "'Siyam Rupali', sans-serif"
+      "fontFamily": "'Siyam Rupali', sans-serif",
+      "dateAdded": "2023-03-20"
     },
     {
       "id": "hind_siliguri",
@@ -54,7 +57,8 @@
       "importUrl": "@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');",
       "linkUrl": "<link href='https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap' rel='stylesheet'>",
       "cssUrl": "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap",
-      "fontFamily": "'Hind Siliguri', sans-serif"
+      "fontFamily": "'Hind Siliguri', sans-serif",
+      "dateAdded": "2023-04-05"
     },
     {
         "id": "noto_serif_bengali",
@@ -68,7 +72,8 @@
         "importUrl": "@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap');",
         "linkUrl": "<link href='https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap' rel='stylesheet'>",
         "cssUrl": "https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap",
-        "fontFamily": "'Noto Serif Bengali', serif"
+        "fontFamily": "'Noto Serif Bengali', serif",
+        "dateAdded": "2023-05-12"
     },
     {
         "id": "baloo_da_2",
@@ -82,7 +87,8 @@
         "importUrl": "@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap');",
         "linkUrl": "<link href='https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap' rel='stylesheet'>",
         "cssUrl": "https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap",
-        "fontFamily": "'Baloo Da 2', sans-serif"
+        "fontFamily": "'Baloo Da 2', sans-serif",
+        "dateAdded": "2023-06-21"
     },
     {
       "id": "ekushey-azad",
@@ -96,7 +102,8 @@
       "importUrl": "@import url('https://banglawebfonts.pages.dev/css/ekushey-azad.css');",
       "linkUrl": "<link href=\"https://banglawebfonts.pages.dev/css/ekushey-azad.css\" rel=\"stylesheet\">",
       "cssUrl": "https://banglawebfonts.pages.dev/css/ekushey-azad.css",
-      "fontFamily": "'Ekushey Azad', sans-serif"
+      "fontFamily": "'Ekushey Azad', sans-serif",
+      "dateAdded": "2023-07-30"
     }
   ]
 }

@@ -1,247 +1,105 @@
-'use client';
 
-import { useState, useEffect } from 'react';
-import type { Font } from '@/types/font';
-import Link from 'next/link';
-import { ArrowLeft, Copy, Info } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useToast } from "@/hooks/use-toast"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from '@/components/ui/input';
-import { Slider } from '@/components/ui/slider';
-import Header from '@/components/header';
+# বাংলা ফন্ট সিডিএন - অ্যাপ্লিকেশন ব্লুপ্রিন্ট
 
-interface FontDetailPageClientProps {
-    font: Font;
-}
+## ১. মূল ধারণা (Core Concept)
 
-const GLYPH_SET = "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ১২৩৪৫৬৭৮৯০";
+"বাংলা ফন্ট সিডিএন" একটি কনটেন্ট ডেলিভারি নেটওয়ার্ক (CDN) এবং বাংলা ফন্ট প্রদর্শনের একটি প্ল্যাটফর্ম। এর প্রধান লক্ষ্য হলো ডেভেলপার এবং ডিজাইনারদের জন্য বিনামূল্যে, সহজে ব্যবহারযোগ্য এবং সুন্দর বাংলা ফন্ট খুঁজে বের করা, প্রিভিউ করা এবং প্রকল্পে ব্যবহার করার একটি নির্ভরযোগ্য উৎস তৈরি করা।
 
-const styleNameToWeight: { [key: string]: number } = {
-  'পাতলা': 100,
-  'Thin': 100,
-  'এক্সট্রা লাইট': 200,
-  'Extra Light': 200,
-  'হালকা': 300,
-  'Light': 300,
-  'নিয়মিত': 400,
-  'Regular': 400,
-  'মিডিয়াম': 500,
-  'Medium': 500,
-  'সেমিবোল্ড': 600,
-  'Semi Bold': 600,
-  'বোল্ড': 700,
-  'Bold': 700,
-  'এক্সট্রাবোল্ড': 800,
-  'Extra Bold': 800,
-  'ব্ল্যাক': 900,
-  'Black': 900,
-};
+---
 
+## ২. প্রধান বৈশিষ্ট্য (Core Features)
 
-export default function FontDetailPageClient({ font }: FontDetailPageClientProps) {
-  const [previewText, setPreviewText] = useState('আমার সোনার বাংলা');
-  const [fontSize, setFontSize] = useState(48);
-  const [embedType, setEmbedType] = useState('link');
-  const [includePreload, setIncludePreload] = useState(false);
-  const { toast } = useToast();
+### ক. ফন্ট লাইব্রেরি (Font Library)
+- **রাউট:** `/`
+- **বিবরণ:** `fonts.json` থেকে সমস্ত ফন্ট একটি রেসপন্সিভ গ্রিড আকারে প্রদর্শন করে।
+- **প্রযুক্তি:** React Server Component, `useState`, `useEffect`.
 
-  useEffect(() => {
-    if (font?.cssUrl) {
-      const existingLink = document.querySelector(`link[href="${font.cssUrl}"]`);
-      if (!existingLink) {
-        const link = document.createElement('link');
-        link.href = font.cssUrl;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      }
-    }
-  }, [font]);
+### খ. ফন্ট কার্ড (Font Card)
+- **কম্পোনেন্ট:** `src/components/font-card.tsx`
+- **বিবরণ:**
+    - ফন্টের নাম, ডিজাইনার এবং পরিসংখ্যান (লাইক, ডাউনলোড) প্রদর্শন করে।
+    - `<iframe>` ব্যবহার করে প্রতিটি ফন্ট তার নিজস্ব স্টাইলে প্রিভিউ দেখানো হয়।
+    - ব্যবহারকারীরা লোকাল স্টোরেজে তাদের পছন্দের ফন্ট সংরক্ষণ করতে পারেন।
+    - ফন্ট ডাউনলোডের ব্যবস্থা রয়েছে।
 
-  const copyToClipboard = (text: string, type: string) => {
-    navigator.clipboard.writeText(text);
-    toast({
-      title: `${type} কপি হয়েছে!`,
-      description: `কোডটি আপনার ক্লিপবোর্ডে কপি করা হয়েছে।`,
-    });
-  };
+### গ. ফন্ট বিস্তারিত পেজ (Font Detail Page)
+- **রাউট:** `/font/[id]`
+- **বিবরণ:**
+    - প্রতিটি ফন্টের জন্য একটি সম্পূর্ণ পৃষ্ঠা।
+    - বড় প্রিভিউ এলাকা, যেখানে ব্যবহারকারীরা টেক্সট এবং ফন্টের আকার পরিবর্তন করতে পারেন।
+    - ফন্টের সমস্ত স্টাইল (যেমন: বোল্ড, রেগুলার) এবং ওজন (weight) প্রদর্শন।
+    - `<link>` এবং `@import` ব্যবহার করে ফন্ট ব্যবহারের কোড কপি করার সুবিধা।
+    - ফন্টের ডিজাইনার, বিভাগ, লাইসেন্স এবং অন্যান্য তথ্য প্রদর্শন।
+    - ফন্টের সমস্ত অক্ষর (Glyphs) দেখার ব্যবস্থা।
 
-  const getEmbedCode = () => {
-    const preloadTag = includePreload ? `<link rel="preload" href="${font.cssUrl}" as="style" />\n` : '';
-    if (embedType === 'link') {
-        return `${preloadTag}<link href='${font.cssUrl}' rel='stylesheet'>`;
-    }
-    return `@import url('${font.cssUrl}');`;
-  }
-  
-  const getCssCode = () => {
-    return `body {\n  font-family: '${font.fontFamily}', sans-serif;\n  /* Add other styles like font-weight, font-style */\n}`;
-  }
+### ঘ. উন্নত ফিল্টারিং এবং সর্টিং
+- **কম্পোনেন্ট:** `src/components/font-toolbar.tsx`
+- **বিবরণ:**
+    - বাংলা নামে ফন্ট অনুসন্ধান করার সুবিধা।
+    - ফন্টের প্রিভিউ টেক্সট এবং আকার পরিবর্তনের জন্য স্লাইডার।
+    - ফন্টের বিভাগ (Category) অনুযায়ী ফিল্টার করার সুবিধা।
+    - "সর্বাধিক জনপ্রিয়," "সর্বাধিক ডাউনলোড," এবং "নতুন যুক্ত" অনুযায়ী ফন্ট সাজানোর (Sort) ব্যবস্থা।
 
-  const minifiedCssUrl = font.cssUrl.includes('.min.css') ? font.cssUrl : font.cssUrl.replace('.css', '.min.css');
+### ঙ. পছন্দের তালিকা (Favorites)
+- **রাউট:** `/favorites`
+- **বিবরণ:** ব্যবহারকারীরা তাদের পছন্দের ফন্টগুলো একটি পৃষ্ঠায় দেখতে পারেন। এই তালিকাটি ব্রাউজারের লোকাল স্টোরেজে সংরক্ষিত থাকে।
 
+### চ. AI-ভিত্তিক ফন্ট পেয়ারিং
+- **রাউট:** `/font-pairing`
+- **বিবরণ:** Google AI ব্যবহার করে একটি বাংলা ফন্টের সাথে মানানসই ইংরেজি ফন্ট খুঁজে বের করার একটি টুল। AI টুলটি পেয়ারিংয়ের কারণও ব্যাখ্যা করে।
+- **প্রযুক্তি:** Genkit (Google AI)।
 
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-       <header className="bg-card border-b border-border shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <Button variant="ghost" asChild>
-            <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors">
-              <ArrowLeft className="h-5 w-5" />
-              <span className='hidden sm:inline'>সব ফন্ট</span>
-            </Link>
-          </Button>
-          <h1 className="text-xl sm:text-2xl font-headline font-bold text-primary">{font.name}</h1>
-          <div/>
-        </div>
-      </header>
-      
-      <main className="container mx-auto px-4 py-8 md:py-12">
-        <div className="bg-card p-6 md:p-8 rounded-xl border shadow-lg mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                <Input
-                    type="text"
-                    className="w-full text-base p-3 border rounded-lg bg-muted/30 focus:ring-primary lg:col-span-2 h-12"
-                    placeholder="এখানে লিখে প্রিভিউ দেখুন"
-                    value={previewText}
-                    onChange={(e) => setPreviewText(e.target.value)}
-                    aria-label="Preview Text Input"
-                />
-                <div className="flex items-center gap-4 w-full">
-                    <Slider
-                        value={[fontSize]}
-                        onValueChange={(value) => setFontSize(value[0])}
-                        min={12}
-                        max={128}
-                        step={1}
-                        className="w-full"
-                        aria-label="Font Size Slider"
-                    />
-                    <span className="font-semibold text-lg text-right w-24 tabular-nums">{fontSize}px</span>
-                </div>
-            </div>
+### ছ. কাস্টম আইকন পেজ
+- **রাউট:** `/icons`
+- **বিবরণ:** প্রকল্পের জন্য তৈরি করা কাস্টম বাংলা SVG আইকনগুলো প্রদর্শন করা হয় এবং SVG কোড কপি করার সুবিধা রয়েছে।
 
-            <div 
-              className="text-center w-full break-words bg-muted/20 p-8 rounded-lg"
-              style={{ fontFamily: font.fontFamily, fontSize: `${fontSize}px`, lineHeight: 1.6 }}
-            >
-              {previewText || 'আমার সোনার বাংলা'}
-            </div>
-        </div>
-        
-        <div className="border-b mb-8">
-            <h2 className="text-2xl font-bold mb-4">স্টাইলসমূহ</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8" style={{ fontFamily: font.fontFamily }}>
-              {font.styles.map((style) => {
-                const weight = styleNameToWeight[style] || 400;
-                return (
-                  <div key={style} className="bg-card border rounded-lg p-4 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-baseline mb-3">
-                        <h4 className="font-semibold">{style}</h4>
-                        <span className="text-sm text-muted-foreground">{weight}</span>
-                      </div>
-                      <p className="text-2xl break-words" style={{ fontWeight: weight, fontSize: '24px' }}>
-                        আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-3 space-y-8">
-                <div>
-                    <h3 className="text-2xl font-bold mb-4">কীভাবে ব্যবহার করবেন</h3>
-                    <Tabs value={embedType} onValueChange={setEmbedType} className="w-full">
-                        <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="link">&lt;link&gt;</TabsTrigger>
-                            <TabsTrigger value="import">@import</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="link" className="mt-4 space-y-2">
-                             <p className="text-sm text-muted-foreground">নিচের কোডটি কপি করে আপনার HTML ডকুমেন্টের &lt;head&gt; অংশে পেস্ট করুন।</p>
-                            <div className="flex items-center space-x-2 mt-2">
-                              <Checkbox id="preload" checked={includePreload} onCheckedChange={(checked) => setIncludePreload(!!checked)} />
-                              <label htmlFor="preload" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                                  Preload লিঙ্ক অন্তর্ভুক্ত করুন (পারফরম্যান্সের জন্য ভালো)
-                              </label>
-                            </div>
-                        </TabsContent>
-                         <TabsContent value="import" className="mt-4">
-                             <p className="text-sm text-muted-foreground">এই নিয়মটি আপনার CSS ফাইলের শুরুতে যোগ করুন।</p>
-                        </TabsContent>
-                    </Tabs>
+### জ. আমাদের সম্পর্কে পেজ (About Page)
+- **রাউট:** `/about`
+- **বিবরণ:** প্রকল্পের লক্ষ্য, ব্যবহৃত প্রযুক্তি, লাইসেন্স এবং অবদানকারীদের তথ্য প্রদর্শন করে।
 
-                    <div className="relative mt-2">
-                        <pre className="text-sm bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><code>{getEmbedCode()}</code></pre>
-                        <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white hover:bg-gray-700" onClick={() => copyToClipboard(getEmbedCode(), 'Embed কোড')}>
-                            <Copy className="h-4 w-4" />
-                        </Button>
-                    </div>
-                </div>
+---
 
-                <div>
-                    <h3 className="text-xl font-bold mb-2">CSS Rules</h3>
-                    <p className="text-sm text-muted-foreground mb-2">ফন্টটি ব্যবহার করার জন্য নিচের CSS কোডটি অনুসরণ করুন।</p>
-                     <div className="relative mt-2">
-                        <pre className="text-sm bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><code>{getCssCode()}</code></pre>
-                        <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-white hover:bg-gray-700" onClick={() => copyToClipboard(getCssCode(), 'CSS কোড')}>
-                            <Copy className="h-4 w-4" />
-                        </Button>
-                    </div>
-                </div>
+## ৩. প্রযুক্তিগত কাঠামো (Tech Stack)
 
-                 <Alert>
-                  <Info className="h-4 w-4" />
-                  <AlertTitle>পারফরম্যান্স টিপ</AlertTitle>
-                  <AlertDescription>
-                    দ্রুত লোডিংয়ের জন্য, <code>.min.css</code> সংস্করণ ব্যবহার করুন।
-                    <div className="mt-2 space-y-1 text-xs">
-                        <p><strong>Standard:</strong> <a href={font.cssUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline break-all">{font.cssUrl}</a></p>
-                        <p><strong>Minified:</strong> <a href={minifiedCssUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline break-all">{minifiedCssUrl}</a></p>
-                    </div>
-                  </AlertDescription>
-                </Alert>
-            </div>
-             <div className="lg:col-span-2 space-y-8">
-                 <div>
-                    <h3 className="text-2xl font-bold mb-4">{font.name} ফন্ট সম্পর্কে</h3>
-                    <div className="bg-card p-4 rounded-lg border">
-                        <div className="space-y-3 text-sm">
-                            <div className="flex justify-between"><strong className="text-muted-foreground">ডিজাইনার</strong> <span className="text-right">{font.designer}</span></div>
-                            <div className="flex justify-between"><strong className="text-muted-foreground">বিভাগ</strong> <span className="text-right">{font.category}</span></div>
-                            <div className="flex justify-between"><strong className="text-muted-foreground">স্টাইল</strong> <span className="text-right">{font.styles.length}</span></div>
-                            <div className="pt-2">
-                              <strong className="text-muted-foreground">লাইসেন্স</strong>
-                              <p className="text-xs mt-1">This font is licensed under the SIL Open Font License. You can use it freely in your products & projects. More info at <a href="https://openfontlicense.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">openfontlicense.org</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div>
-                    <h3 className="text-2xl font-bold mb-4">গ্লিফস (Glyphs)</h3>
-                     <p className="text-sm text-muted-foreground mb-4">ফন্টের অন্তর্ভুক্ত কিছু অক্ষর।</p>
-                    <div className="bg-card p-4 rounded-lg border" style={{ fontFamily: font.fontFamily }}>
-                        <div className="grid grid-cols-8 sm:grid-cols-10 gap-2 text-3xl text-center">
-                            {GLYPH_SET.split('').map((char, index) => (
-                                <div key={index} className="flex items-center justify-center p-1 rounded-md aspect-square hover:bg-muted">{char}</div>
-                            ))}
-                        </div>
-                    </div>
-                 </div>
-             </div>
-        </div>
-      </main>
+- **ফ্রেমওয়ার্ক:** Next.js (App Router)
+- **ভাষা:** TypeScript
+- **স্টাইলিং:** Tailwind CSS
+- **UI কম্পোনেন্ট:** shadcn/ui
+- **আইকন:** Lucide React এবং কাস্টম SVG আইকন
+- **জেনারেটিভ AI:** Genkit (Google AI)
+- **হোস্টিং:** Vercel (ডিফল্ট)
+- **ডেটা সোর্স:** `src/data/fonts.json` (স্ট্যাটিক JSON ফাইল)
 
-       <footer className="bg-card border-t mt-16 py-6">
-          <div className="container mx-auto px-4 text-center text-muted-foreground">
-              <p>&copy; {new Date().getFullYear()} বাংলা ফন্ট সিডিএন। সর্বস্বত্ব সংরক্ষিত।</p>
-          </div>
-      </footer>
-    </div>
-  );
-}
+---
+
+## ৪. ফাইলের কাঠামো (Project Structure)
+
+- **`src/app/`**: প্রধান রাউটিং এবং পেজগুলো এখানে অবস্থিত।
+    - `page.tsx`: হোমপেজ (ফন্ট গ্রিড)।
+    - `font/[id]/page.tsx`: ফন্ট বিস্তারিত পেজ।
+    - `favorites/page.tsx`: পছন্দের তালিকা।
+    - `about/page.tsx`: আমাদের সম্পর্কে পেজ।
+    - `font-pairing/page.tsx`: AI ফন্ট পেয়ারিং টুল।
+    - `icons/page.tsx`: আইকন লাইব্রেরি।
+- **`src/components/`**: পুনরায় ব্যবহারযোগ্য React কম্পোনেন্টসমূহ।
+    - `font-card.tsx`: প্রতিটি ফন্টের জন্য কার্ড।
+    - `font-grid.tsx`: ফন্ট প্রদর্শনের গ্রিড।
+    - `font-toolbar.tsx`: ফিল্টার এবং সর্টিং টুলবার।
+    - `header.tsx`: ওয়েবসাইটের হেডার।
+    - `ui/`: shadcn/ui থেকে জেনারেট করা কম্পোনেন্ট।
+- **`src/data/`**: অ্যাপ্লিকেশন ডেটা।
+    - `fonts.json`: সমস্ত ফন্টের তথ্য।
+- **`src/ai/`**: Genkit এবং AI-সম্পর্কিত ফ্লো।
+    - `flows/fontPairingFlow.ts`: ফন্ট পেয়ারিংয়ের জন্য AI ফ্লো।
+- **`src/types/`**: TypeScript টাইপ ডেফিনিশন।
+- **`src/hooks/`**: কাস্টম React হুক (যেমন: `useFavorites`)।
+- **`public/`**: স্ট্যাটিক অ্যাসেট (প্রয়োজনে)।
+
+---
+
+## ৫. ভবিষ্যতের সম্ভাব্য ফিচার (Future Roadmap)
+
+- **ব্যবহারকারী অ্যাকাউন্ট:** Firebase Authentication ব্যবহার করে ব্যবহারকারী লগইন এবং ক্লাউড-ভিত্তিক পছন্দের তালিকা।
+- **ফন্ট কালেকশন:** ব্যবহারকারীদের নিজস্ব ফন্ট কালেকশন তৈরি করার সুবিধা।
+- **অ্যাডভান্সড স্পেসিমেন জেনারেটর:** কাস্টম টেক্সট, ওজন, লাইন-হাইট ইত্যাদি পরিবর্তন করে ফন্ট পরীক্ষার টুল।
+- **ব্লগ সেকশন:** বাংলা টাইপোগ্রাফি নিয়ে আর্টিকেল বা ব্লগ।

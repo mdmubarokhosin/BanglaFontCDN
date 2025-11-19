@@ -71,10 +71,17 @@ export default function FontPairingPage() {
         category: selectedFont.category,
         designer: selectedFont.designer,
       });
+      if (!result) {
+        throw new Error('AI model did not return a result.');
+      }
       setPairingResult(result);
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
-      setError('পেয়ারিং পরামর্শ আনতে একটি ত্রুটি ঘটেছে। অনুগ্রহ করে আবার চেষ্টা করুন।');
+      if (e.message?.includes('503')) {
+          setError('AI মডেলটি সাড়া দিতে পারছে না। কিছুক্ষণ পর আবার চেষ্টা করুন।');
+      } else {
+          setError('পেয়ারিং পরামর্শ আনতে একটি ত্রুটি ঘটেছে। অনুগ্রহ করে আবার চেষ্টা করুন।');
+      }
     } finally {
       setIsLoading(false);
     }

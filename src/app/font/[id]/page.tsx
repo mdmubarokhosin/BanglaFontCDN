@@ -1,5 +1,5 @@
-
 export const runtime = 'edge';
+
 import { notFound } from 'next/navigation';
 import FontDetailPageClient from '@/components/font-detail-page-client';
 import type { Font } from '@/types/font';
@@ -7,7 +7,7 @@ import fontData from '@/data/fonts.json';
 import { Metadata } from 'next';
 
 type FontDetailPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>; // Next.js 15 এ params একটি Promise
 };
 
 async function getFont(id: string): Promise<Font | null> {
@@ -16,7 +16,8 @@ async function getFont(id: string): Promise<Font | null> {
 }
 
 export async function generateMetadata({ params }: FontDetailPageProps): Promise<Metadata> {
-  const font = await getFont(params.id);
+  const { id } = await params;
+  const font = await getFont(id);
 
   if (!font) {
     return {
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: FontDetailPageProps): Promise
 }
 
 export default async function FontDetailPage({ params }: FontDetailPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const font = await getFont(id);
 
   if (!font) {

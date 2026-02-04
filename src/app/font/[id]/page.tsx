@@ -1,4 +1,5 @@
 
+export const runtime = 'edge';
 import { notFound } from 'next/navigation';
 import FontDetailPageClient from '@/components/font-detail-page-client';
 import type { Font } from '@/types/font';

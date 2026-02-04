@@ -104,6 +104,21 @@
       "cssUrl": "https://banglawebfonts.pages.dev/css/ekushey-azad.css",
       "fontFamily": "'Ekushey Azad', sans-serif",
       "dateAdded": "2023-07-30"
+    },
+    {
+      "id": "july",
+      "name": "জুলাই",
+      "designer": "বিসিসি",
+      "category": "সানস-সেরিফ",
+      "styles": ["নিয়মিত", "বোল্ড"],
+      "likes": 3682,
+      "downloads": 7031,
+      "fileUrl": "#",
+      "importUrl": "@import url('https://cdnmx.pages.dev/assets/fonts/july/font.css');",
+      "linkUrl": "<link href=\"https://cdnmx.pages.dev/assets/fonts/july/font.css\" rel=\"stylesheet\">",
+      "cssUrl": "https://banglawebfonts.pages.dev/css/ekushey-azad.css",
+      "fontFamily": "'July', sans-serif",
+      "dateAdded": "2025-09-01"
     }
   ]
 }

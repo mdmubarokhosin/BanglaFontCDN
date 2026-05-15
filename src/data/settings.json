@@ -1,0 +1,29 @@
+{
+  "siteName": "বাংলা ফন্ট সিডিএন",
+  "siteDescription": "জনপ্রিয় বাংলা ফন্ট খুঁজে নিন এবং ব্যবহার করুন।",
+  "siteUrl": "https://banglafontcdn.pages.dev",
+  "contactEmail": "admin@banglafontcdn.com",
+  "githubRepo": "BanglaFontCDN",
+  "githubOwner": "mdmubarokhosin",
+  "adminPassword": "",
+  "fontsPerPage": 12,
+  "enableAiPairing": true,
+  "enableDownloads": true,
+  "enableLikes": true,
+  "enableRegistration": false,
+  "openrouterApiKey": "",
+  "openrouterModel": "google/gemini-2.5-flash-preview",
+  "openrouterSiteUrl": "https://banglafontcdn.pages.dev",
+  "openrouterSiteName": "BanglaFontCDN",
+  "socialLinks": {
+    "facebook": "",
+    "twitter": "",
+    "github": "https://github.com/mdmubarokhosin/BanglaFontCDN",
+    "youtube": ""
+  },
+  "seo": {
+    "ogImage": "/og-image.png",
+    "defaultKeywords": ["বাংলা ফন্ট", "Bangla font", "বাংলাদেশ", "CDN", "ফ্রি ফন্ট"]
+  },
+  "updatedAt": "2025-01-01T00:00:00.000Z"
+}

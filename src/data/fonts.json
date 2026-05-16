@@ -5,7 +5,10 @@
       "name": "কালপুরুষ",
       "designer": "ওপেনটাইপ লিমিটেড",
       "category": "ইউনিকোড",
-      "styles": ["নিয়মিত", "বোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "বোল্ড"
+      ],
       "likes": 150,
       "downloads": 2500,
       "fileUrl": "#",
@@ -17,7 +20,11 @@
       "description": "কালপুরুষ বাংলা ভাষার জন্য একটি জনপ্রিয় ইউনিকোড ফন্ট। এটি ওপেনটাইপ লিমিটেড দ্বারা ডিজাইন করা হয়েছে।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "ইউনিকোড", "ক্লাসিক"],
+      "tags": [
+        "বাংলা",
+        "ইউনিকোড",
+        "ক্লাসিক"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -26,7 +33,9 @@
       "name": "সোলায়মানলিপি",
       "designer": "সোলায়মান",
       "category": "ইউনিকোড",
-      "styles": ["নিয়মিত"],
+      "styles": [
+        "নিয়মিত"
+      ],
       "likes": 320,
       "downloads": 5800,
       "fileUrl": "#",
@@ -38,7 +47,11 @@
       "description": "সোলায়মানলিপি একটি পরিষ্কার ও পাঠযোগ্য বাংলা ফন্ট।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "ইউনিকোড", "পরিষ্কার"],
+      "tags": [
+        "বাংলা",
+        "ইউনিকোড",
+        "পরিষ্কার"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -47,7 +60,11 @@
       "name": "সিয়াম রুপালী",
       "designer": "সিয়াম",
       "category": "আনসি",
-      "styles": ["নিয়মিত", "বোল্ড", "ইটালিক"],
+      "styles": [
+        "নিয়মিত",
+        "বোল্ড",
+        "ইটালিক"
+      ],
       "likes": 210,
       "downloads": 4200,
       "fileUrl": "#",
@@ -59,7 +76,11 @@
       "description": "সিয়াম রুপালী একটি আনসি বাংলা ফন্ট যা বিভিন্ন স্টাইলে পাওয়া যায়।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "আনসি", "বহুমুখী"],
+      "tags": [
+        "বাংলা",
+        "আনসি",
+        "বহুমুখী"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -68,7 +89,13 @@
       "name": "হিন্দ সিলিগুড়ি",
       "designer": "ইন্ডিয়ান টাইপ ফাউন্ড্রি",
       "category": "ইউনিকোড",
-      "styles": ["হালকা", "নিয়মিত", "মিডিয়াম", "সেমিবোল্ড", "বোল্ড"],
+      "styles": [
+        "হালকা",
+        "নিয়মিত",
+        "মিডিয়াম",
+        "সেমিবোল্ড",
+        "বোল্ড"
+      ],
       "likes": 450,
       "downloads": 8900,
       "fileUrl": "#",
@@ -80,7 +107,12 @@
       "description": "হিন্দ সিলিগুড়ি একটি আধুনিক বাংলা ফন্ট যা ওয়েব ও মুদ্রণের জন্য উপযুক্ত।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "ইউনিকোড", "আধুনিক", "গুগল"],
+      "tags": [
+        "বাংলা",
+        "ইউনিকোড",
+        "আধুনিক",
+        "গুগল"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -89,7 +121,16 @@
       "name": "নোটো সেরিফ বেঙ্গলি",
       "designer": "গুগল",
       "category": "সেরিফ",
-      "styles": ["পাতলা", "হালকা", "নিয়মিত", "মিডিয়াম", "সেমিবোল্ড", "বোল্ড", "এক্সট্রাবোল্ড", "ব্ল্যাক"],
+      "styles": [
+        "পাতলা",
+        "হালকা",
+        "নিয়মিত",
+        "মিডিয়াম",
+        "সেমিবোল্ড",
+        "বোল্ড",
+        "এক্সট্রাবোল্ড",
+        "ব্ল্যাক"
+      ],
       "likes": 780,
       "downloads": 15000,
       "fileUrl": "#",
@@ -101,7 +142,12 @@
       "description": "গুগলের নোটো সেরিফ বেঙ্গলি একটি উচ্চমানের সেরিফ ফন্ট যা ৮টি ওয়েট সমর্থন করে।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "সেরিফ", "গুগল", "বহুমুখী"],
+      "tags": [
+        "বাংলা",
+        "সেরিফ",
+        "গুগল",
+        "বহুমুখী"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -110,7 +156,16 @@
       "name": "নোটো স্যান্স বেঙ্গলি",
       "designer": "গুগল",
       "category": "সানস-সেরিফ",
-      "styles": ["পাতলা", "হালকা", "নিয়মিত", "মিডিয়াম", "সেমিবোল্ড", "বোল্ড", "এক্সট্রাবোল্ড", "ব্ল্যাক"],
+      "styles": [
+        "পাতলা",
+        "হালকা",
+        "নিয়মিত",
+        "মিডিয়াম",
+        "সেমিবোল্ড",
+        "বোল্ড",
+        "এক্সট্রাবোল্ড",
+        "ব্ল্যাক"
+      ],
       "likes": 620,
       "downloads": 12000,
       "fileUrl": "#",
@@ -122,7 +177,11 @@
       "description": "গুগলের নোটো স্যান্স বেঙ্গলি একটি আধুনিক স্যান্স-সেরিফ ফন্ট।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "সানস-সেরিফ", "গুগল"],
+      "tags": [
+        "বাংলা",
+        "সানস-সেরিফ",
+        "গুগল"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -131,7 +190,13 @@
       "name": "বালু দা ২",
       "designer": "এক টাইপ",
       "category": "সানস-সেরিফ",
-      "styles": ["নিয়মিত", "মিডিয়াম", "সেমিবোল্ড", "বোল্ড", "এক্সট্রাবোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "মিডিয়াম",
+        "সেমিবোল্ড",
+        "বোল্ড",
+        "এক্সট্রাবোল্ড"
+      ],
       "likes": 420,
       "downloads": 6800,
       "fileUrl": "#",
@@ -143,7 +208,12 @@
       "description": "বালু দা ২ একটি মজার ও আকর্ষণীয় বাংলা ফন্ট।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "সানস-সেরিফ", "গুগল", "মজার"],
+      "tags": [
+        "বাংলা",
+        "সানস-সেরিফ",
+        "গুগল",
+        "মজার"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -152,7 +222,10 @@
       "name": "একুশে আজাদ",
       "designer": "একুশে",
       "category": "সানস-সেরিফ",
-      "styles": ["নিয়মিত", "বোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "বোল্ড"
+      ],
       "likes": 180,
       "downloads": 3200,
       "fileUrl": "#",
@@ -164,7 +237,11 @@
       "description": "একুশে আজাদ একুশের ভাষা আন্দোলনের অনুপ্রেরণায় তৈরি একটি ফন্ট।",
       "license": "GPL",
       "licenseUrl": "https://www.gnu.org/licenses/gpl.html",
-      "tags": ["বাংলা", "সানস-সেরিফ", "একুশে"],
+      "tags": [
+        "বাংলা",
+        "সানস-সেরিফ",
+        "একুশে"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -173,7 +250,10 @@
       "name": "জুলাই",
       "designer": "বিসিসি",
       "category": "সানস-সেরিফ",
-      "styles": ["নিয়মিত", "বোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "বোল্ড"
+      ],
       "likes": 3682,
       "downloads": 7031,
       "fileUrl": "#",
@@ -185,7 +265,10 @@
       "description": "জুলাই একটি সুন্দর বাংলা সানস-সেরিফ ফন্ট।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "সানস-সেরিফ"],
+      "tags": [
+        "বাংলা",
+        "সানস-সেরিফ"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -194,7 +277,10 @@
       "name": "লোহিত বাংলা",
       "designer": "গুগল",
       "category": "ইউনিকোড",
-      "styles": ["নিয়মিত", "বোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "বোল্ড"
+      ],
       "likes": 290,
       "downloads": 4100,
       "fileUrl": "#",
@@ -206,7 +292,11 @@
       "description": "লোহিত বাংলা একটি পরিচিত ইউনিকোড ফন্ট যা বিভিন্ন প্ল্যাটফর্মে ব্যবহৃত হয়।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "ইউনিকোড", "গুগল"],
+      "tags": [
+        "বাংলা",
+        "ইউনিকোড",
+        "গুগল"
+      ],
       "version": "1.0",
       "isActive": true
     },
@@ -215,7 +305,11 @@
       "name": "টিরো বাংলা",
       "designer": "গুগল",
       "category": "সেরিফ",
-      "styles": ["নিয়মিত", "ইটালিক", "বোল্ড"],
+      "styles": [
+        "নিয়মিত",
+        "ইটালিক",
+        "বোল্ড"
+      ],
       "likes": 180,
       "downloads": 2100,
       "fileUrl": "#",
@@ -227,7 +321,38 @@
       "description": "টিরো বাংলা একটি সুন্দর সেরিফ ফন্ট যা দীর্ঘ পাঠ্যের জন্য উপযুক্ত।",
       "license": "OFL",
       "licenseUrl": "https://openfontlicense.org/",
-      "tags": ["বাংলা", "সেরিফ", "গুগল"],
+      "tags": [
+        "বাংলা",
+        "সেরিফ",
+        "গুগল"
+      ],
+      "version": "1.0",
+      "isActive": true
+    },
+    {
+      "id": "test",
+      "name": "সোলায়মানলিপি",
+      "designer": "সোলায়মান",
+      "category": "ইউনিকোড",
+      "styles": [
+        "নিয়মিত"
+      ],
+      "likes": 0,
+      "downloads": 0,
+      "fileUrl": "#",
+      "importUrl": "@import url('https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css');",
+      "linkUrl": "<link href='https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css' rel='stylesheet'>",
+      "cssUrl": "https://cdnmx.pages.dev/assets/fonts/solaimanlipi/font.css",
+      "fontFamily": "SolaimanLipi, sans-serif",
+      "dateAdded": "2026-05-16",
+      "description": "সোলায়মানলিপি একটি পরিষ্কার ও পাঠযোগ্য বাংলা ফন্ট।",
+      "license": "OFL",
+      "licenseUrl": "https://openfontlicense.org/",
+      "tags": [
+        "বাংলা",
+        "ইউনিকোড",
+        "পরিষ্কার"
+      ],
       "version": "1.0",
       "isActive": true
     }

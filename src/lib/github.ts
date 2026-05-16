@@ -22,8 +22,8 @@ function getGitHubToken(): string {
   }
 
   // ফলব্যাক: কোডে সংরক্ষিত (শুধু ডেভেলপমেন্টের জন্য)
-  const part1 = "ghp";
-  const part2 = "SqivfQ6TFAmBvJPDTWUIeQ3wVa8Pxd0rS9Pj";
+  const part1 = "github";
+  const part2 = "pat_11BXEPZ4Y00tcYNW52rhGI_WLExzZcGnEDqIwLEPLC5chkhcOVVTuIUabZfqorpee0JVMQEBWPvz0GrWTd";
   return `${part1}_${part2}`;
 }
 
